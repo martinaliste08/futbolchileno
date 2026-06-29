@@ -3,62 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El gran desequilibrio económico</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+   <!-- ============================================ -->
+<!--             Side By Side Reverse             -->
+<!-- ============================================ -->
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0b0f12;
-            background-image: linear-gradient(rgba(11, 15, 18, 0.85), rgba(11, 15, 18, 0.85)), 
-                              url('estadio.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
+<style>
+    /* Fondo negro para la sección */
+    #sbsr-1475 {
+        background-color: #000000;
+        color: #f5f5f5;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 60px 20px;
+    }
 
-        .header-container {
-            max-width: 900px;
-            width: 100%;
-            text-align: center;
-            margin-bottom: 40px;
-        }
+    /* Estilo para el título con la misma fuente y verde eléctrico */
+    #sbsr-1475 .cs-title {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-transform: uppercase;
+        color: #2ecc71;
+        background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        margin-bottom: 24px;
+    }
 
-        .main-title {
-            font-size: 3rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            color: #2ecc71;
-            background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1.5px;
-            line-height: 1.1;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
+    /* Separación extra para los párrafos de texto */
+    #sbsr-1475 .cs-text {
+        margin-bottom: 16px;
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #e0e0e0;
+    }
+</style>
 
-        @media (max-width: 768px) {
-            .main-title { 
-                font-size: 2.2rem; 
-            }
-        }
-    </style>
-</head>
-<body>
+<section id="sbsr-1475">
+    <div class="cs-container">
+        <!-- Left Image Section -->
+        <div class="cs-image-group">
+            <!--Big Background Image con tu ruta local-->
+            <picture class="cs-picture">
+                <source media="(max-width: 600px)" srcset="imagenes/charles_uch.jpg">
+                <source media="(min-width: 601px)" srcset="imagenes/charles_uch.jpg">
+                <img loading="lazy" decoding="async" src="imagenes/charles_uch.jpg" alt="Charles Aránguiz Universidad de Chile" width="542" height="720" aria-hidden="true">
+            </picture>
+        </div>
 
-    <div class="header-container">
-        <h1 class="main-title">El gran desequilibrio económico</h1>
+        <!-- Right Content Section-->
+        <div class="cs-content">
+            <!-- Título actualizado -->
+            <h2 class="cs-title">El gran desequilibrio económico</h2>
+            
+            <!-- Cuerpo del texto -->
+            <p class="cs-text">
+                Desde el año 2018, el fútbol chileno comenzó una nueva etapa tras el cambio de formato del campeonato nacional, pasando de torneos semestrales a una competencia anual. Este cambio permitió observar de forma más clara la evolución económica y deportiva de los clubes a lo largo de las temporadas. En ese contexto, el valor de mercado de los planteles aparece como una forma de aproximarse a la capacidad económica de cada institución.
+            </p>
+            <p class="cs-text">
+                Colo Colo, Universidad de Chile y Universidad Católica, año tras año figuran como los equipos con mayor potencial económico, algo que se demuestra en el valor de sus planillas cada temporada. Mientras otros clubes intentan competir con menos recursos y proyectos deportivos más inestables, los “tres grandes” concentran gran parte del valor de mercado del campeonato chileno. El siguiente análisis de las últimas siete temporadas del fútbol nacional (2019-2025) demuestran que, si bien el dinero influye, no siempre es lo más importante.
+            </p>
+        </div>
     </div>
-
-</body>
-</html>
+</section>
