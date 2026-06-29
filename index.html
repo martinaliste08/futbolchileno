@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>El mito de los millones en el fútbol chileno</title>
     <style>
-        /* Estilos Generales y Reset */
         * {
             margin: 0;
             padding: 0;
@@ -14,100 +13,100 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #121212;
+            background-color: #0b0f12;
+            background-image: linear-gradient(rgba(11, 15, 18, 0.85), rgba(11, 15, 18, 0.85)), 
+                              url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: #f5f5f5;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* Contenedor Principal */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
-            background-color: #1e1e1e;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .main-title {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #2ecc71;
+            background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+            letter-spacing: 1.5px;
+            line-height: 1.1;
+            text-align: center;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .text-card {
+            background-color: rgba(20, 26, 31, 0.85);
+            border: 2.5px solid #39ff14;
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            text-align: center;
-        }
-
-        /* Título Principal */
-        .main-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            color: #f1c40f; /* Amarillo Coquimbo */
-            margin-bottom: 30px;
-            letter-spacing: 1px;
-            line-height: 1.2;
-        }
-
-        /* Espacio para la Imagen */
-        .image-container {
-            width: 100%;
-            height: 400px;
-            background-color: #2a2a2a;
-            border: 2px dashed #333;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Bloque de Texto */
-        .content-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #e0e0e0;
-            text-align: justify;
             margin-bottom: 40px;
+            box-shadow: 0 0 25px rgba(57, 255, 20, 0.15), inset 0 0 15px rgba(0,0,0,0.6);
+            backdrop-filter: blur(8px);
+            width: 100%;
         }
 
-        /* Botón con Animación */
+        .content-text {
+            font-size: 1.25rem;
+            line-height: 1.8;
+            color: #ffffff;
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .highlight-question {
+            display: block;
+            margin-top: 20px;
+            font-weight: 700;
+            color: #39ff14;
+        }
+
         .btn-read-more {
             background-color: transparent;
-            color: #f1c40f;
-            border: 2px solid #f1c40f;
-            padding: 14px 36px;
-            font-size: 1.1rem;
-            font-weight: 600;
+            color: #ffffff;
+            border: 2.5px solid #39ff14;
+            padding: 16px 45px;
+            font-size: 1.15rem;
+            font-weight: 700;
             text-transform: uppercase;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
-            letter-spacing: 1px;
-            transition: all 0.4s ease; /* Controla la suavidad de la animación */
-            outline: none;
+            letter-spacing: 1.5px;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
-        /* Animación al pasar el mouse (Hover) */
         .btn-read-more:hover {
-            background-color: #f1c40f;
-            color: #121212;
-            transform: scale(1.08); /* Se agranda un 8% */
-            box-shadow: 0 0 20px rgba(241, 196, 15, 0.6); /* Efecto de brillo */
+            background-color: #39ff14;
+            color: #0b0f12;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.6);
         }
 
-        /* Adaptación para pantallas pequeñas */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .main-title {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
             }
-            .image-container {
-                height: 250px;
+            .text-card {
+                padding: 25px;
             }
-            .container {
-                padding: 20px;
+            .content-text {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -115,15 +114,14 @@
 <body>
 
     <div class="container">
-        <h1 class="main-title">El mito de los millones en el fútbol chileno</h1>
+        <h1 class="main-title">El mito de los millones<br>en el fútbol chileno</h1>
 
-        <div class="image-container">
-            <img src="tu-imagen.jpg" alt="Coquimbo Unido Campeón 2025">
+        <div class="text-card">
+            <p class="content-text">
+                El año 2025 Coquimbo Unido logró una de las hazañas más grandes del fútbol chileno, por primera vez en su historia, consiguieron ganar el campeonato nacional. Sin ser de los equipos más populares, ni de los más poderosos a nivel económico, los coquimbanos lograron vencer a los equipos más grandes de la primera división. En el fútbol se suele creer que los equipos que más dinero invierten en fichajes son los que mejor rinden año tras año, sin embargo, casos como el de Coquimbo nos hacen cuestionarnos lo siguiente: 
+                <span class="highlight-question">¿Se relaciona la cantidad de dinero invertido por los equipos con la obtención de mejores resultados?</span>
+            </p>
         </div>
-
-        <p class="content-text">
-            El año 2025 Coquimbo Unido logró una de las hazañas más grandes del fútbol chileno, por primera vez en su historia, consiguieron ganar el campeonato nacional. Sin ser de los equipos más populares, ni de los más poderosos a nivel económico, los coquimbanos lograron vencer a los equipos más grandes de la primera división. En el fútbol se suele creer que los equipos que más dinero invierten en fichajes son los que mejor rinden año tras año, sin embargo, casos como el de Coquimbo nos hacen cuestionarnos lo siguiente: ¿Se relaciona la cantidad de dinero invertido por los equipos con la obtención de mejores resultados?
-        </p>
 
         <button class="btn-read-more">Leer más</button>
     </div>
