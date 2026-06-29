@@ -3,64 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!-- ============================================ -->
-<!--             Side By Side Reverse             -->
-<!-- ============================================ -->
+ <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El gran desequilibrio económico</title>
+    <style>
+        /* Estilos Generales y Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
-    /* Fondo negro para la sección */
-    #sbsr-1475 {
-        background-color: #000000;
-        color: #f5f5f5;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        padding: 60px 20px;
-    }
+        body {
+            background-color: #000000;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
 
-    /* Estilo para el título con la misma fuente y verde eléctrico */
-    #sbsr-1475 .cs-title {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        text-transform: uppercase;
-        color: #2ecc71;
-        background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        margin-bottom: 24px;
-    }
+        /* Contenedor del componente */
+        #sbsr-1475 {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+        }
 
-    /* Separación extra para los párrafos de texto */
-    #sbsr-1475 .cs-text {
-        margin-bottom: 16px;
-        line-height: 1.8;
-        font-size: 1.1rem;
-        color: #e0e0e0;
-    }
-</style>
+        .cs-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px; /* Espacio entre la imagen y el texto */
+        }
+
+        /* Sección de la Imagen (Izquierda) */
+        .cs-image-group {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cs-picture img {
+            width: 100%;
+            max-width: 480px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Sección de Contenido (Derecha) */
+        .cs-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        /* Título Verde Eléctrico */
+        .cs-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #2ecc71;
+            background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        /* Párrafos de Texto */
+        .cs-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.15rem;
+            color: #e0e0e0;
+            text-align: justify;
+        }
+
+        /* Diseño Responsivo para Celulares y Tablets */
+        @media (max-width: 900px) {
+            .cs-container {
+                flex-direction: column; /* Pone la imagen arriba y el texto abajo en pantallas chicas */
+                gap: 30px;
+            }
+
+            .cs-title {
+                font-size: 2rem;
+                text-align: center;
+            }
+
+            .cs-picture img {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
 
 <section id="sbsr-1475">
     <div class="cs-container">
-        <!-- Left Image Section -->
+        
+        <!-- Contenedor Izquierdo: Imagen -->
         <div class="cs-image-group">
-            <!--Big Background Image con tu ruta local-->
             <picture class="cs-picture">
                 <source media="(max-width: 600px)" srcset="imagenes/charles_uch.jpg">
                 <source media="(min-width: 601px)" srcset="imagenes/charles_uch.jpg">
-                <img loading="lazy" decoding="async" src="imagenes/charles_uch.jpg" alt="Charles Aránguiz Universidad de Chile" width="542" height="720" aria-hidden="true">
+                <img loading="lazy" decoding="async" src="imagenes/charles_uch.jpg" alt="Charles Aránguiz" width="542" height="720" aria-hidden="true">
             </picture>
         </div>
 
-        <!-- Right Content Section-->
+        <!-- Contenedor Derecho: Textos -->
         <div class="cs-content">
-            <!-- Título actualizado -->
             <h2 class="cs-title">El gran desequilibrio económico</h2>
             
-            <!-- Cuerpo del texto -->
             <p class="cs-text">
                 Desde el año 2018, el fútbol chileno comenzó una nueva etapa tras el cambio de formato del campeonato nacional, pasando de torneos semestrales a una competencia anual. Este cambio permitió observar de forma más clara la evolución económica y deportiva de los clubes a lo largo de las temporadas. En ese contexto, el valor de mercado de los planteles aparece como una forma de aproximarse a la capacidad económica de cada institución.
             </p>
+            
             <p class="cs-text">
                 Colo Colo, Universidad de Chile y Universidad Católica, año tras año figuran como los equipos con mayor potencial económico, algo que se demuestra en el valor de sus planillas cada temporada. Mientras otros clubes intentan competir con menos recursos y proyectos deportivos más inestables, los “tres grandes” concentran gran parte del valor de mercado del campeonato chileno. El siguiente análisis de las últimas siete temporadas del fútbol nacional (2019-2025) demuestran que, si bien el dinero influye, no siempre es lo más importante.
             </p>
         </div>
+
     </div>
 </section>
+
+</body>
+</html>
