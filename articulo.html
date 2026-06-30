@@ -78,7 +78,7 @@
 
         #reviews-306 {
             position: relative;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)), 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)), 
                               url('imagenes/cancha_futbol.jpg');
             background-size: cover;
             background-position: center;
@@ -131,15 +131,75 @@
             text-align: left;
         }
 
+        #stability-section {
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        #stability-section .cs-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 50px;
+        }
+
+        #stability-section .cs-image-group {
+            flex: 1;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        #stability-section .cs-picture img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+            object-fit: cover;
+            display: block;
+        }
+
+        #stability-section .cs-content {
+            flex: 1;
+            width: 100%;
+        }
+
+        #stability-section .cs-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: #2ecc71;
+            background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+
+        #stability-section .cs-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            text-align: justify;
+        }
+
         @media (max-width: 900px) {
             #sbsr-1475 .cs-container,
-            .reviews-container {
+            .reviews-container,
+            #stability-section .cs-container {
                 flex-direction: column;
                 gap: 35px;
                 text-align: center;
             }
 
-            #sbsr-1475 .cs-title {
+            #sbsr-1475 .cs-title,
+            #stability-section .cs-title {
                 font-size: 2rem;
             }
 
@@ -158,7 +218,6 @@
 
     <section id="sbsr-1475">
         <div class="cs-container">
-            
             <div class="cs-image-group">
                 <picture class="cs-picture">
                     <source media="(max-width: 600px)" srcset="imagenes/charles_uch.jpg">
@@ -166,37 +225,48 @@
                     <img loading="lazy" decoding="async" src="imagenes/charles_uch.jpg" alt="Charles Aránguiz" width="542" height="720" aria-hidden="true">
                 </picture>
             </div>
-
             <div class="cs-content">
                 <h2 class="cs-title">El gran desequilibrio económico</h2>
-                
                 <p class="cs-text">
                     Desde el año 2018, el fútbol chileno comenzó una nueva etapa tras el cambio de formato del campeonato nacional, pasando de torneos semestrales a una competencia anual. Este cambio permitió observar de forma más clara la evolución económica y deportiva de los clubes a lo largo de las temporadas. En ese contexto, el valor de mercado de los planteles aparece como una forma de aproximarse a la capacidad económica de cada institución.
                 </p>
-                
                 <p class="cs-text">
                     Colo Colo, Universidad de Chile y Universidad Católica, año tras año figuran como los equipos con mayor potencial económico, algo que se demuestra en el valor de sus planillas cada temporada. Mientras otros clubes intentan competir con menos recursos y proyectos deportivos más inestables, los “tres grandes” concentran gran parte del valor de mercado del campeonato chileno. El siguiente análisis de las últimas siete temporadas del fútbol nacional (2019-2025) demuestran que, si bien el dinero influye, no siempre es lo más importante.
                 </p>
             </div>
-
         </div>
     </section>
 
     <section id="reviews-306">
         <div class="reviews-container">
-            
             <picture class="cs-image">
                 <source media="(max-width: 600px)" srcset="imagenes/grafico_pato.jpg">
                 <source media="(min-width: 601px)" srcset="imagenes/grafico_pato.jpg">
                 <img aria-hidden="true" loading="lazy" decoding="async" src="imagenes/grafico_pato.jpg" alt="Gráfico Pato" width="842" height="548">
             </picture>
-            
             <div class="cs-content">
                 <p class="cs-review">
                     Colo Colo, Universidad de Chile y Universidad Católica son los equipos que más dinero han invertido en las últimas temporadas.
                 </p>
             </div>
+        </div>
+    </section>
 
+    <section id="stability-section">
+        <div class="cs-container">
+            <div class="cs-image-group">
+                <picture class="cs-picture">
+                    <source media="(max-width: 600px)" srcset="imagenes/gustavo_quinteros.jpg">
+                    <source media="(min-width: 601px)" srcset="imagenes/gustavo_quinteros.jpg">
+                    <img loading="lazy" decoding="async" src="imagenes/gustavo_quinteros.jpg" alt="Gustavo Quinteros" width="542" height="720" aria-hidden="true">
+                </picture>
+            </div>
+            <div class="cs-content">
+                <h2 class="cs-title">la importancia de la estabilidad</h2>
+                <p class="cs-text">
+                    El gráfico anterior muestra la evolución del valor de mercado de los clubes de Primera División entre 2019 y 2026. A lo largo de los años, los tres grandes del fútbol chileno lideran gran parte del período, consolidando una diferencia económica importante frente al resto de los equipos. Sin embargo, los datos también permiten observar que la inversión económica no siempre se traduce directamente en resultados deportivos.
+                </p>
+            </div>
         </div>
     </section>
 
