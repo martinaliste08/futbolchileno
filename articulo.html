@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportaje: Fútbol Chileno</title>
     
-    <!-- Librerías de Vega -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
-    <!-- Vinculación del archivo CSS externo -->
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <!-- Bloque 1: El gran desequilibrio económico -->
     <section class="section-standard">
         <div class="cs-container">
             <div class="cs-image-group">
@@ -23,13 +24,13 @@
             </div>
             <div class="cs-content">
                 <h2 class="cs-title">El gran desequilibrio económico</h2>
-                <p class="cs-text">Desde el año 2018, el fútbol chileno comenzó una nueva etapa tras el cambio de formato...</p>
-                <p class="cs-text">Colo Colo, Universidad de Chile y Universidad Católica figuran año tras año...</p>
+                <p class="cs-text">Desde el año 2018, el fútbol chileno comenzó una nueva etapa tras el cambio de formato del campeonato nacional, pasando de torneos semestrales a una competencia anual.
+</p>
+                <p class="cs-text">Colo Colo, Universidad de Chile y Universidad Católica figuran año tras año como los equipos con mayor potencial económico, algo que se demuestra en el valor de sus planillas cada temporada. Mientras otros clubes intentan competir con menos recursos y proyectos deportivos más inestables, los “tres grandes” concentran gran parte del valor de mercado del campeonato chileno.</p>
             </div>
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: La razón de fondo -->
     <section class="section-standard">
         <div class="cs-container">
             <div class="cs-content">
@@ -42,7 +43,6 @@
         </div>
     </section>
 
-    <!-- Bloque 2: Gráfico Pato -->
     <section class="section-standard">
         <div class="cs-container">
             <div class="cs-image-group">
@@ -54,12 +54,15 @@
         </div>
     </section>
 
-    <!-- Bloque 3: Importancia estabilidad -->
     <section class="section-standard">
         <div class="cs-container">
             <div class="cs-content">
                 <h2 class="cs-title">La importancia de la estabilidad</h2>
-                <p class="cs-text">El gráfico anterior muestra la evolución del valor de mercado...</p>
+                <p class="cs-text">A lo largo de los años, los tres grandes del fútbol chileno lideran gran parte del período, consolidando una diferencia económica importante frente al resto de los equipos. Sin embargo, los datos también permiten observar que la inversión económica no siempre se traduce directamente en resultados deportivos. Aunque los clubes con planteles más valorizados suelen mantenerse en posiciones competitivas, esto no garantiza automáticamente títulos o campañas exitosas.
+</p>
+                <p class="cs-text">La evolución del mercado también refleja momentos de crecimiento y caída en distintos clubes, influenciados por ventas de jugadores, clasificaciones internacionales y cambios en la estabilidad institucional. Aun así, la brecha económica entre los equipos grandes y el resto del campeonato se mantiene como una constante durante gran parte del período analizado.
+
+</p>
             </div>
             <div class="cs-image-group">
                 <picture class="cs-picture"><img src="imagenes/gustavo_quinteros.jpg" alt="Gustavo Quinteros"></picture>
@@ -67,20 +70,17 @@
         </div>
     </section>
 
-    <!-- Bloque 4: Gráfico Técnicos con fondo de Estadio -->
     <section id="tech-chart-section">
         <div class="tech-chart-container">
             <div id="vis-grafico-tecnicos"></div>
         </div>
     </section>
 
-    <!-- Bloque 5: Desenlace 2025 -->
     <section class="section-standard">
         <h2 class="cs-title">La impredecible temporada 2025</h2>
         <p class="cs-text">Sin embargo, la temporada 2025 terminó con un desenlace inesperado...</p>
     </section>
 
-    <!-- NUEVA SECCIÓN INTEGRADA: Los tres recuadros interactivos/tarjetas de información -->
     <section id="cards-section">
         <p class="cards-intro-text">
             A continuación, analiza en detalle los tres pilares o casos institucionales clave que marcaron la pauta y las tendencias de rendimiento durante los últimos años en el campeonato nacional.
@@ -101,7 +101,6 @@
         </div>
     </section>
 
-    <!-- Bloque 8: Visualización de Transferencias con fondo Cancha -->
     <section id="reviews-306">
         <div class="reviews-container">
             <picture class="cs-image">
@@ -115,7 +114,6 @@
         </div>
     </section>
 
-    <!-- Bloque Conclusión -->
     <section class="section-standard">
         <div class="cs-container">
             <div class="cs-content">
@@ -132,7 +130,6 @@
         </div>
     </section>
 
-    <!-- Inicialización del Gráfico interactivo -->
     <script>
         const miGrafico = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
