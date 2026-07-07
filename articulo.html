@@ -2,65 +2,50 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reportaje: Fútbol Chileno</title>
-    
+    <link rel="stylesheet" href="estilos.css">
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000000; color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; min-height: 100vh; }
-        .section-standard { max-width: 1100px; width: 100%; margin: 0 auto; padding: 60px 20px; }
-        .cs-container { display: flex; flex-direction: row; align-items: center; gap: 50px; }
-        .cs-image-group { flex: 1; width: 100%; display: flex; justify-content: center; }
-        .cs-picture img { width: 100%; max-width: 450px; height: auto; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7); object-fit: cover; display: block; }
-        .cs-content { flex: 1; width: 100%; }
-        .cs-title { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; color: #2ecc71; background: linear-gradient(180deg, #39ff14 0%, #2ecc71 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); margin-bottom: 24px; line-height: 1.2; }
-        .cs-text { margin-bottom: 20px; line-height: 1.8; font-size: 1.1rem; color: #e0e0e0; text-align: justify; }
-
-        #transfer-chart-block { position: relative; background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url('imagenes/coq_campeon.jpg'); background-size: cover; background-position: center; background-attachment: fixed; padding: 80px 20px; display: flex; align-items: center; justify-content: center; }
-        .reviews-container { max-width: 1200px; width: 100%; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 50px; margin: 0 auto; }
-        .cs-image-static { flex: 1.5; max-width: 700px; width: 100%; display: block; }
-        .cs-image-static img { width: 100%; height: auto; border: 4px solid #39ff14; border-radius: 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8); display: block; }
-        .cs-content-side { flex: 1; max-width: 450px; }
-        .cs-review-text { font-size: 1.4rem; line-height: 1.8; color: #ffffff; font-weight: 700; text-shadow: 2px 2px 14px rgba(0, 0, 0, 1); text-align: left; }
-    </style>
+    <title>Reportaje: Fútbol Chileno</title>
 </head>
 <body>
 
     <section class="section-standard">
         <div class="cs-container">
+            <div class="cs-image-group"><picture class="cs-picture"><img src="imagenes/charles_uch.jpg" alt="Foto"></picture></div>
             <div class="cs-content">
-                <h2 class="cs-title">Confiar en el proceso: ¿es realmente la clave del éxito?</h2>
-                <p class="cs-text">El análisis de las últimas siete temporadas en la Primera División de Chile deja una lección contundente: en el fútbol chileno, el orden y la estabilidad suelen ser más rentables que el dinero invertido. Si bien existe una brecha económica histórica y estructural que posiciona a Colo Colo, Universidad de Chile y Universidad Católica un escalón por sobre el resto en valor de mercado, los billetes por sí solos no compran copas. El dinero puede otorgar una ventaja inicial y un colchón financiero, pero es la gestión de ese recurso la que define el éxito.</p>
-                <p class="cs-text">En base a la investigación realizada, se puede concluir que el éxito de los procesos largos y la catástrofe que suele acompañar a la rotación excesiva de directores técnicos y jugadores no son casualidades, sino una tendencia, y aunque pueden haber excepciones (como la Universidad Católica de 2021 que campeonó cambiado varias veces de DT, o Cobreloa 2024 que descendió manteniendo el suyo), la regla general es clara.</p>
-                <p class="cs-text">El caótico desenlace de la temporada 2025 funciona como el reflejo fiel de esta premisa. Fue el año en que Colo Colo, en el año de su centenario, se quedó con las manos vacías y sin pasaje a copas internacionales, mientras que Everton, a pesar de la fuerte inyección económica que recibió del Grupo Pachuca, terminó salvándose del descenso en la última fecha. En la otra vereda, un proyecto más austero pero cohesionado como Coquimbo Unido terminó levantando la copa. El hecho que siete de los nueve clubes que rearmaron sus planteles con más de veinte fichajes hayan terminado de la mitad de la tabla hacia abajo es la prueba empírica de que acumular nombres no es lo mismo que construir un equipo.</p>
-                <p class="cs-text">En un fútbol chileno marcado por una desigualdad financiera y la inestabilidad institucional, apostar por la continuidad y el mediano plazo parece ser el camino más eficiente para desafiar el desequilibrio económico. Al final del día, los datos presentados, y casos como el de Coquimbo Unido nos recuerdan que, si bien el dinero es un factor de peso, este no puede comprar la estabilidad ni la cohesión de un equipo.</p>
-            </div>
-            <div class="cs-image-group" style="flex-direction: column; gap: 20px;">
-                <picture class="cs-picture"><img src="imagenes/equipos_chile.jpg" alt="Equipos Chile"></picture>
-                <picture class="cs-picture"><img src="imagenes/zampedri.jpg" alt="Zampedri"></picture>
+                <h2 class="cs-title">El gran desequilibrio económico</h2>
+                <p class="cs-text">Desde el año 2018, el fútbol chileno comenzó una nueva etapa...</p>
             </div>
         </div>
     </section>
 
     <section id="transfer-chart-block">
         <div class="reviews-container">
-            <picture class="cs-image-static">
-                <img src="imagenes/visualization.jpg" alt="Visualización Transferencias">
-            </picture>
+            <picture class="cs-image-static"><img src="imagenes/visualization.jpg" alt="Gráfico"></picture>
             <div class="cs-content-side">
-                <p class="cs-review-text">
-                    De esta manera, el torneo dejó una lección clara: 7 de los 9 clubes que sumaron más de 20 incorporaciones durante el año terminaron de la octava posición hacia abajo, demostrando que salir a fichar en masa no siempre garantiza los mejores resultados.
-                </p>
+                <p class="cs-review-text">De esta manera, el torneo dejó una lección clara: 7 de los 9 clubes que sumaron más de 20 incorporaciones durante el año terminaron de la octava posición hacia abajo.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-standard">
+        <div class="cs-container">
+            <div class="cs-content">
+                <h2 class="cs-title">Confiar en el proceso: ¿es realmente la clave del éxito?</h2>
+                <p class="cs-text">El análisis de las últimas siete temporadas en la Primera División de Chile deja una lección contundente: en el fútbol chileno, el orden y la estabilidad suelen ser más rentables que el dinero invertido. Si bien existe una brecha económica histórica y estructural que posiciona a Colo Colo, Universidad de Chile y Universidad Católica un escalón por sobre el resto en valor de mercado, los billetes por sí solos no compran copas.</p>
+                <p class="cs-text">El caótico desenlace de la temporada 2025 funciona como el reflejo fiel de esta premisa. Fue el año en que Colo Colo, en el año de su centenario, se quedó con las manos vacías y sin pasaje a copas internacionales, mientras que Everton, a pesar de la fuerte inyección económica, terminó salvándose del descenso en la última fecha. En la otra vereda, un proyecto más austero pero cohesionado como Coquimbo Unido terminó levantando la copa.</p>
+            </div>
+            <div class="cs-image-group" style="flex-direction: column; gap: 20px;">
+                <picture class="cs-picture"><img src="imagenes/equipos_chile.jpg" alt="Equipos"></picture>
+                <picture class="cs-picture"><img src="imagenes/zampedri.jpg" alt="Zampedri"></picture>
             </div>
         </div>
     </section>
 
     <script>
-        // Aquí puedes pegar el JSON si lo necesitas
+        const miGrafico = { /* Pega aquí tu JSON */ };
+        vegaEmbed('#vis-grafico-tecnicos', miGrafico, { "actions": false }).catch(console.error);
     </script>
 </body>
 </html>
