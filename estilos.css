@@ -292,60 +292,100 @@ body {
     }
 }
 
-/* 1. Contenedor principal de pantalla completa */
-.brecha-fullwidth {
-    width: 100% !important;
-    max-width: 100vw !important;
-    position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),
-                      url('imagenes/foto_fondo.jpg') !important; 
-    background-size: cover !important;
-    background-position: center !important;
-    padding: 60px 0 !important;
+/* ==========================================
+   ESTILOS PARA EL NUEVO HEADER DEL REPORTAJE
+   ========================================== */
+.main-header {
+    background-color: #0d1117; /* Negro oscuro / Fondo de tu tema */
+    border-bottom: 2px solid #222;
+    padding: 15px 0;
+    width: 100%;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column; /* Alinea los elementos hacia abajo en pantallas chicas */
-    align-items: center;
-    justify-content: center;
 }
 
-/* 2. Asegura que el contenido intermedio no desborde */
-.brecha-fullwidth .cs-container {
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
-    padding: 0 20px !important;
+.main-header .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Permite que colapse de forma responsiva en celulares */
+    gap: 15px;
     box-sizing: border-box;
+}
+
+.main-header .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.main-header .header-logo {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.main-header .header-text-group {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-/* 3. FONDO NEGRO SÓLIDO PARA EL GRÁFICO (Para que no se confunda con el fondo) */
-.brecha-fullwidth .cs-image-group {
-    background-color: #0d1117 !important; /* Color oscuro/negro sólido de tu tema */
-    padding: 25px;
-    border-radius: 12px;
-    border: 3px solid #39ff14;
-    width: 100% !important;
-    max-width: 900px !important; 
-    box-sizing: border-box; /* Evita que el padding sume ancho extra */
-    margin-bottom: 30px;
+.main-header .header-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    color: #39ff14; /* Verde neón para el título */
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.2;
 }
 
-.brecha-fullwidth .cs-content {
-    background-color: rgba(13, 17, 23, 0.9);
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #222;
-    width: 100% !important;
-    max-width: 800px !important; 
-    box-sizing: border-box; 
-    text-align: center;
-    word-wrap: break-word; 
+.main-header .header-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #8b949e; /* Gris claro */
+    margin: 4px 0 0 0;
+    font-size: 0.9rem;
 }
 
-.brecha-fullwidth .cs-text strong {
+.main-header .header-nav {
+    display: flex;
+    gap: 20px;
+}
+
+.main-header .header-nav a {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: #ffffff; /* Enlaces en blanco */
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.25s ease;
+}
+
+/* Efecto hover interactivo con el verde neón */
+.main-header .header-nav a:hover {
+    background-color: rgba(57, 255, 20, 0.15);
     color: #39ff14;
-    font-weight: bold;
+}
+
+/* Ajustes para pantallas pequeñas (Celulares) */
+@media (max-width: 768px) {
+    .main-header .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .main-header .header-brand {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .main-header .header-title {
+        font-size: 1.2rem;
+    }
+    .main-header .header-nav {
+        width: 100%;
+        justify-content: center;
+    }
 }
