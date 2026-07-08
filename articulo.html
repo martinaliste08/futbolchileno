@@ -130,7 +130,7 @@
         </div>
     </section>
 
-    <script>
+   <script>
         // 1. ESPECIFICACIÓN DEL GRÁFICO 1: VALOR DE MERCADO (AÑOS 2019-2025)
         const specGraficoMercado = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
@@ -204,12 +204,12 @@
             }
         };
 
-        // 2. NUEVA ESPECIFICACIÓN DEL GRÁFICO 2: CANTIDAD DE TÉCNICOS POR EQUIPO (REEMPLAZO TOTAL)
+        // 2. ESPECIFICACIÓN CORREGIDA DEL GRÁFICO 2: ALTURA DINÁMICA CON "STEP"
         const specGraficoTecnicos = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Cantidad de técnicos por equipo y posición en el torneo",
             "width": "container",
-            "height": 450,
+            "height": {"step": 30}, // CAMBIO CLAVE: Asigna 30px de alto por cada equipo. Evita que se amontonen.
             "config": {
                 "background": "transparent",
                 "text": {"font": "Inter", "color": "#ffffff"},
@@ -220,20 +220,16 @@
             },
             "data": {
                 "values": [
-                    // Muestra de datos para la simulación del CSV (2019 - 2025)
-                    // Temporada 2019 (Ordenados de mejor a peor en el torneo)
                     {"Temporada": 2019, "Equipo": "U. Católica", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2019, "Equipo": "Colo Colo", "Tecnicos": 2, "Posicion": 2},
                     {"Temporada": 2019, "Equipo": "Palestino", "Tecnicos": 1, "Posicion": 3},
                     {"Temporada": 2019, "Equipo": "U. de Chile", "Tecnicos": 3, "Posicion": 14},
                     
-                    // Temporada 2024
                     {"Temporada": 2024, "Equipo": "Colo Colo", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2024, "Equipo": "U. de Chile", "Tecnicos": 1, "Posicion": 2},
                     {"Temporada": 2024, "Equipo": "U. Católica", "Tecnicos": 2, "Posicion": 3},
                     {"Temporada": 2024, "Equipo": "Cobreloa", "Tecnicos": 1, "Posicion": 15},
 
-                    // Temporada 2025 (Última temporada - carga por defecto)
                     {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2025, "Equipo": "U. de Chile", "Tecnicos": 1, "Posicion": 2},
                     {"Temporada": 2025, "Equipo": "U. Católica", "Tecnicos": 3, "Posicion": 3},
@@ -244,7 +240,7 @@
             "params": [
                 {
                     "name": "Temporada_Seleccionada",
-                    "value": 2025, // Carga dinámica del último año
+                    "value": 2025,
                     "bind": {
                         "input": "select",
                         "options": [2019, 2020, 2021, 2022, 2023, 2024, 2025],
@@ -254,11 +250,9 @@
             ],
             "transform": [
                 {"filter": "datum.Temporada == Temporada_Seleccionada"},
-                // Calculamos un string dinámico "(X°)" para concatenarlo al final de la barra
                 {"calculate": " '(' + datum.Posicion + '°)' ", "as": "TextoPosicion"}
             ],
             "layer": [
-                // Capa 1: Las barras de color verde estándar con opacidad del 85%
                 {
                     "mark": {"type": "bar", "color": "#2ca02c", "opacity": 0.85, "cornerRadiusEnd": 3},
                     "encoding": {
@@ -272,7 +266,7 @@
                             "field": "Equipo",
                             "type": "nominal",
                             "title": null,
-                            "sort": {"field": "Posicion", "order": "ascending"} // Ordenado de mejor a peor posición
+                            "sort": {"field": "Posicion", "order": "ascending"}
                         },
                         "tooltip": [
                             {"field": "Equipo", "title": "Club"},
@@ -281,16 +275,15 @@
                         ]
                     }
                 },
-                // Capa 2: Texto dinámico de posición final en el torneo (X°) al costado de las barras
                 {
                     "mark": {
                         "type": "text",
                         "align": "left",
                         "baseline": "middle",
-                        "dx": 6, // Separación justa desde el extremo de la barra
+                        "dx": 6,
                         "font": "Inter",
                         "fontWeight": "bold",
-                        "color": "#39ff14" // Verde eléctrico para que resalte excelentemente sobre el fondo oscuro
+                        "color": "#39ff14"
                     },
                     "encoding": {
                         "x": {"field": "Tecnicos", "type": "quantitative"},
@@ -301,7 +294,7 @@
             ]
         };
         
-        // Renderizar ambos gráficos dinámicamente de forma independiente
+        // Renderizar ambos gráficos dinámicamente
         vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false }).catch(console.error);
         vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false }).catch(console.error);
     </script>
