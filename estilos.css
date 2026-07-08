@@ -9,8 +9,9 @@ body {
     color: #f5f5f5;
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
-    /* Intenta saliendo de la carpeta css si fuera necesario */
-    cursor: url('../imagenes/balon_futbol.png'), default;
+    
+    /* CURSOR DE BALÓN DE FÚTBOL EN SVG DIRECTO (No depende de archivos ni rutas) */
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'></circle><path d='m12 2-1.5 4.5L6 8.5l.5 5.5 5.5 1.5 5.5-1.5.5-5.5-4.5-2z'></path><path d='M12 22v-3.5'></path><path d='m20 12-3.5-.5'></path><path d='m4 12 3.5-.5'></path><path d='m17 5.5 2.5-2.5'></path><path d='m7 5.5-2.5-2.5'></path></svg>") 16 16, default;
 }
 
 .section-standard {
