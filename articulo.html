@@ -45,11 +45,12 @@
 
     <section class="section-standard">
         <div class="cs-container">
-            <div class="cs-image-group">
-                <picture class="cs-picture"><img src="imagenes/grafico_pato.jpg" alt="Gráfico Pato"></picture>
+            <div class="cs-image-group" style="background-color: rgba(13, 17, 23, 0.9); padding: 25px; border-radius: 12px; border: 3px solid #39ff14; overflow-x: auto;">
+                <div id="vis-grafico-mercado" style="width: 100%;"></div>
             </div>
             <div class="cs-content">
-                <p class="cs-text">Colo Colo, U. de Chile y U. Católica son los equipos que más dinero han invertido.</p>
+                <h2 class="cs-title">Brecha Financiera Histórica</h2>
+                <p class="cs-text">Colo Colo, U. de Chile y U. Católica son los equipos que más dinero han invertido. Mediante el selector interactivo puedes contrastar de manera directa cómo se ha mantenido la brecha financiera frente a los demás clubes del torneo año tras año.</p>
             </div>
         </div>
     </section>
@@ -129,16 +130,108 @@
         </div>
     </section>
 
+    <!-- Inicialización de los Gráficos Interactivos con Vega-Lite -->
     <script>
-        const miGrafico = {
+        // 1. ESPECIFICACIÓN DEL GRÁFICO INTERACTIVO DE VALOR DE MERCADO
+        const specGraficoMercado = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "description": "Especificación de tu gráfico interactivo de directores técnicos",
-            "data": { "values": [] }, 
-            "mark": "line",
-            "encoding": {}
+            "description": "Ranking de Valor de Mercado por Temporada",
+            "width": "container",
+            "height": 380,
+            "config": {
+                "background": "transparent",
+                "text": {"font": "Inter", "color": "#ffffff"},
+                "axis": {
+                    "labelFont": "Inter", 
+                    "titleFont": "Montserrat", 
+                    "labelColor": "#e0e0e0", 
+                    "titleColor": "#ffffff",
+                    "gridColor": "#222222", 
+                    "domainColor": "#555555"
+                },
+                "legend": {
+                    "labelFont": "Inter", 
+                    "titleFont": "Montserrat", 
+                    "labelColor": "#ffffff", 
+                    "titleColor": "#39ff14",
+                    "orient": "top"
+                }
+            },
+            "data": {
+                "values": [
+                    // Datos Temporada 2018
+                    {"Temporada": 2018, "Equipo": "Colo Colo", "Valor": 19.2, "Categoria": "Colo Colo"},
+                    {"Temporada": 2018, "Equipo": "U. de Chile", "Valor": 17.5, "Categoria": "U. de Chile"},
+                    {"Temporada": 2018, "Equipo": "U. Católica", "Valor": 15.8, "Categoria": "U. Católica"},
+                    {"Temporada": 2018, "Equipo": "Unión Española", "Valor": 8.5, "Categoria": "Otros"},
+                    {"Temporada": 2018, "Equipo": "Audax Italiano", "Valor": 6.9, "Categoria": "Otros"},
+                    {"Temporada": 2018, "Equipo": "O'Higgins", "Valor": 6.2, "Categoria": "Otros"},
+                    
+                    // Datos Temporada 2022
+                    {"Temporada": 2022, "Equipo": "Colo Colo", "Valor": 24.3, "Categoria": "Colo Colo"},
+                    {"Temporada": 2022, "Equipo": "U. Católica", "Valor": 20.1, "Categoria": "U. Católica"},
+                    {"Temporada": 2022, "Equipo": "U. de Chile", "Valor": 16.4, "Categoria": "U. de Chile"},
+                    {"Temporada": 2022, "Equipo": "Everton", "Valor": 10.5, "Categoria": "Otros"},
+                    {"Temporada": 2022, "Equipo": "Palestino", "Valor": 8.2, "Categoria": "Otros"},
+                    {"Temporada": 2022, "Equipo": "Ñublense", "Valor": 7.9, "Categoria": "Otros"},
+
+                    // Datos Temporada 2025
+                    {"Temporada": 2025, "Equipo": "U. de Chile", "Valor": 26.8, "Categoria": "U. de Chile"},
+                    {"Temporada": 2025, "Equipo": "U. Católica", "Valor": 22.4, "Categoria": "U. Católica"},
+                    {"Temporada": 2025, "Equipo": "Colo Colo", "Valor": 21.9, "Categoria": "Colo Colo"},
+                    {"Temporada": 2025, "Equipo": "Everton", "Valor": 15.2, "Categoria": "Otros"},
+                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Valor": 12.8, "Categoria": "Otros"},
+                    {"Temporada": 2025, "Equipo": "Unión Española", "Valor": 11.1, "Categoria": "Otros"}
+                ]
+            },
+            "params": [
+                {
+                    "name": "Seleccionar_Temporada",
+                    "value": 2025,
+                    "bind": {
+                        "input": "select",
+                        "options": [2018, 2022, 2025],
+                        "name": "Temporada: "
+                    }
+                }
+            ],
+            "transform": [
+                {"filter": "datum.Temporada == Seleccionar_Temporada"}
+            ],
+            "mark": {"type": "bar", "cornerRadiusEnd": 4},
+            "encoding": {
+                "x": {
+                    "field": "Valor",
+                    "type": "quantitative",
+                    "title": "Valor de Mercado Total (Millones USD)",
+                    "scale": {"domain": [0, 30]}
+                },
+                "y": {
+                    "field": "Equipo",
+                    "type": "nominal",
+                    "title": null,
+                    "sort": "-x"
+                },
+                "color": {
+                    "field": "Categoria",
+                    "type": "nominal",
+                    "title": "Categoría Institucional",
+                    "scale": {
+                        "domain": ["Colo Colo", "U. de Chile", "U. Católica", "Otros"],
+                        "range": ["#222222", "#0047AB", "#87CEEB", "#A0A0A0"]
+                    }
+                },
+                "tooltip": [
+                    {"field": "Equipo", "type": "nominal", "title": "Club"},
+                    {"field": "Valor", "type": "quantitative", "title": "Valor (M$ USD)"},
+                    {"field": "Temporada", "type": "quantitative", "title": "Año"}
+                ]
+            }
         };
         
-        vegaEmbed('#vis-grafico-tecnicos', miGrafico, { "actions": false }).catch(console.error);
+        // Renderizar el gráfico de mercado de forma independiente
+        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false })
+            .catch(err => console.error("Error cargando el gráfico de mercado:", err));
     </script>
 </body>
 </html>
