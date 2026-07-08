@@ -406,9 +406,156 @@
             ]
         };
         
-        // Renderizar ambos gráficos dinámicamente
-        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false }).catch(console.error);
-        vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false }).catch(console.error);
+        // ==========================================
+        // 3. NUEVO GRÁFICO: FICHAJES VS TABLA
+        // ==========================================
+        const specGraficoFichajes = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": "container", "height": {"step": 28}, "config": themeConfig,
+            "data": {
+                "values": [
+                    {"Temporada": 2019, "Equipo": "CSD Colo-Colo", "Altas": 22, "Posicion": 2},
+                    {"Temporada": 2019, "Equipo": "CD Universidad Católica", "Altas": 31, "Posicion": 1},
+                    {"Temporada": 2019, "Equipo": "Universidad de Chile", "Altas": 28, "Posicion": 15},
+                    {"Temporada": 2019, "Equipo": "Unión La Calera", "Altas": 43, "Posicion": 4},
+                    {"Temporada": 2019, "Equipo": "Universidad de Concepción", "Altas": 25, "Posicion": 16},
+                    {"Temporada": 2019, "Equipo": "CD Everton", "Altas": 27, "Posicion": 11},
+                    {"Temporada": 2019, "Equipo": "Deportes Antofagasta", "Altas": 24, "Posicion": 12},
+                    {"Temporada": 2019, "Equipo": "CD Palestino", "Altas": 45, "Posicion": 3},
+                    {"Temporada": 2019, "Equipo": "CD Huachipato", "Altas": 29, "Posicion": 6},
+                    {"Temporada": 2019, "Equipo": "Deportes Iquique", "Altas": 22, "Posicion": 14},
+                    {"Temporada": 2019, "Equipo": "Unión Española", "Altas": 23, "Posicion": 9},
+                    {"Temporada": 2019, "Equipo": "CD O'Higgins", "Altas": 31, "Posicion": 8},
+                    {"Temporada": 2019, "Equipo": "CD Cobresal", "Altas": 22, "Posicion": 10},
+                    {"Temporada": 2019, "Equipo": "Coquimbo Unido", "Altas": 25, "Posicion": 5},
+                    {"Temporada": 2019, "Equipo": "Curicó Unido", "Altas": 25, "Posicion": 13},
+                    {"Temporada": 2019, "Equipo": "Audax Italiano", "Altas": 20, "Posicion": 7},
+                    {"Temporada": 2020, "Equipo": "CSD Colo-Colo", "Altas": 23, "Posicion": 16},
+                    {"Temporada": 2020, "Equipo": "CD Universidad Católica", "Altas": 23, "Posicion": 1},
+                    {"Temporada": 2020, "Equipo": "CD Everton", "Altas": 23, "Posicion": 12},
+                    {"Temporada": 2020, "Equipo": "CD Palestino", "Altas": 19, "Posicion": 5},
+                    {"Temporada": 2020, "Equipo": "Unión La Calera", "Altas": 29, "Posicion": 2},
+                    {"Temporada": 2020, "Equipo": "Universidad de Chile", "Altas": 27, "Posicion": 3},
+                    {"Temporada": 2020, "Equipo": "CD O'Higgins", "Altas": 22, "Posicion": 10},
+                    {"Temporada": 2020, "Equipo": "Unión Española", "Altas": 16, "Posicion": 4},
+                    {"Temporada": 2020, "Equipo": "Deportes Iquique", "Altas": 15, "Posicion": 17},
+                    {"Temporada": 2020, "Equipo": "Deportes La Serena", "Altas": 24, "Posicion": 15},
+                    {"Temporada": 2020, "Equipo": "Deportes Antofagasta", "Altas": 19, "Posicion": 6},
+                    {"Temporada": 2020, "Equipo": "Santiago Wanderers", "Altas": 14, "Posicion": 11},
+                    {"Temporada": 2020, "Equipo": "CD Huachipato", "Altas": 23, "Posicion": 8},
+                    {"Temporada": 2020, "Equipo": "Universidad de Concepción", "Altas": 23, "Posicion": 14},
+                    {"Temporada": 2020, "Equipo": "Coquimbo Unido", "Altas": 28, "Posicion": 18},
+                    {"Temporada": 2020, "Equipo": "Curicó Unido", "Altas": 16, "Posicion": 9},
+                    {"Temporada": 2020, "Equipo": "Audax Italiano", "Altas": 14, "Posicion": 13},
+                    {"Temporada": 2020, "Equipo": "CD Cobresal", "Altas": 18, "Posicion": 7},
+                    {"Temporada": 2021, "Equipo": "CSD Colo-Colo", "Altas": 12, "Posicion": 2},
+                    {"Temporada": 2021, "Equipo": "CD Universidad Católica", "Altas": 19, "Posicion": 1},
+                    {"Temporada": 2021, "Equipo": "Unión Española", "Altas": 13, "Posicion": 5},
+                    {"Temporada": 2021, "Equipo": "CD Palestino", "Altas": 23, "Posicion": 8},
+                    {"Temporada": 2021, "Equipo": "Universidad de Chile", "Altas": 23, "Posicion": 11},
+                    {"Temporada": 2021, "Equipo": "Unión La Calera", "Altas": 24, "Posicion": 4},
+                    {"Temporada": 2021, "Equipo": "Deportes La Serena", "Altas": 26, "Posicion": 10},
+                    {"Temporada": 2021, "Equipo": "Deportes Antofagasta", "Altas": 16, "Posicion": 6},
+                    {"Temporada": 2021, "Equipo": "CD O'Higgins", "Altas": 19, "Posicion": 13},
+                    {"Temporada": 2021, "Equipo": "CD Everton", "Altas": 25, "Posicion": 12},
+                    {"Temporada": 2021, "Equipo": "Audax Italiano", "Altas": 14, "Posicion": 3},
+                    {"Temporada": 2021, "Equipo": "CD Huachipato", "Altas": 22, "Posicion": 15},
+                    {"Temporada": 2021, "Equipo": "Curicó Unido", "Altas": 19, "Posicion": 14},
+                    {"Temporada": 2021, "Equipo": "CD Ñublense", "Altas": 17, "Posicion": 7},
+                    {"Temporada": 2021, "Equipo": "Santiago Wanderers", "Altas": 15, "Posicion": 17},
+                    {"Temporada": 2021, "Equipo": "CD Cobresal", "Altas": 16, "Posicion": 9},
+                    {"Temporada": 2021, "Equipo": "Deportes Melipilla", "Altas": 12, "Posicion": 16},
+                    {"Temporada": 2022, "Equipo": "CD Universidad Católica", "Altas": 23, "Posicion": 6},
+                    {"Temporada": 2022, "Equipo": "CSD Colo-Colo", "Altas": 28, "Posicion": 1},
+                    {"Temporada": 2022, "Equipo": "Universidad de Chile", "Altas": 19, "Posicion": 13},
+                    {"Temporada": 2022, "Equipo": "CD Palestino", "Altas": 26, "Posicion": 4},
+                    {"Temporada": 2022, "Equipo": "Deportes Antofagasta", "Altas": 21, "Posicion": 16},
+                    {"Temporada": 2022, "Equipo": "CD Everton", "Altas": 22, "Posicion": 9},
+                    {"Temporada": 2022, "Equipo": "CD O'Higgins", "Altas": 11, "Posicion": 8},
+                    {"Temporada": 2022, "Equipo": "Unión Española", "Altas": 19, "Posicion": 11},
+                    {"Temporada": 2022, "Equipo": "CD Huachipato", "Altas": 14, "Posicion": 12},
+                    {"Temporada": 2022, "Equipo": "Coquimbo Unido", "Altas": 25, "Posicion": 14},
+                    {"Temporada": 2022, "Equipo": "Unión La Calera", "Altas": 21, "Posicion": 10},
+                    {"Temporada": 2022, "Equipo": "CD Ñublense", "Altas": 18, "Posicion": 2},
+                    {"Temporada": 2022, "Equipo": "Audax Italiano", "Altas": 15, "Posicion": 7},
+                    {"Temporada": 2022, "Equipo": "Deportes La Serena", "Altas": 23, "Posicion": 15},
+                    {"Temporada": 2022, "Equipo": "CD Cobresal", "Altas": 13, "Posicion": 5},
+                    {"Temporada": 2022, "Equipo": "Curicó Unido", "Altas": 18, "Posicion": 3},
+                    {"Temporada": 2023, "Equipo": "CSD Colo-Colo", "Altas": 14, "Posicion": 3},
+                    {"Temporada": 2023, "Equipo": "CD Universidad Católica", "Altas": 17, "Posicion": 7},
+                    {"Temporada": 2023, "Equipo": "Universidad de Chile", "Altas": 25, "Posicion": 9},
+                    {"Temporada": 2023, "Equipo": "CD Ñublense", "Altas": 19, "Posicion": 12},
+                    {"Temporada": 2023, "Equipo": "CD Palestino", "Altas": 16, "Posicion": 4},
+                    {"Temporada": 2023, "Equipo": "Unión Española", "Altas": 18, "Posicion": 10},
+                    {"Temporada": 2023, "Equipo": "CD Everton", "Altas": 15, "Posicion": 6},
+                    {"Temporada": 2023, "Equipo": "Unión La Calera", "Altas": 20, "Posicion": 8},
+                    {"Temporada": 2023, "Equipo": "Curicó Unido", "Altas": 14, "Posicion": 16},
+                    {"Temporada": 2023, "Equipo": "Audax Italiano", "Altas": 19, "Posicion": 13},
+                    {"Temporada": 2023, "Equipo": "CD Huachipato", "Altas": 16, "Posicion": 1},
+                    {"Temporada": 2023, "Equipo": "Coquimbo Unido", "Altas": 23, "Posicion": 5},
+                    {"Temporada": 2023, "Equipo": "CD O'Higgins", "Altas": 24, "Posicion": 11},
+                    {"Temporada": 2023, "Equipo": "CD Cobresal", "Altas": 16, "Posicion": 2},
+                    {"Temporada": 2023, "Equipo": "Magallanes", "Altas": 14, "Posicion": 15},
+                    {"Temporada": 2023, "Equipo": "Deportes Copiapó", "Altas": 15, "Posicion": 14},
+                    {"Temporada": 2024, "Equipo": "CSD Colo-Colo", "Altas": 24, "Posicion": 1},
+                    {"Temporada": 2024, "Equipo": "CD Universidad Católica", "Altas": 23, "Posicion": 5},
+                    {"Temporada": 2024, "Equipo": "CD Everton", "Altas": 16, "Posicion": 7},
+                    {"Temporada": 2024, "Equipo": "Universidad de Chile", "Altas": 18, "Posicion": 2},
+                    {"Temporada": 2024, "Equipo": "CD O'Higgins", "Altas": 14, "Posicion": 14},
+                    {"Temporada": 2024, "Equipo": "Unión La Calera", "Altas": 24, "Posicion": 11},
+                    {"Temporada": 2024, "Equipo": "Unión Española", "Altas": 18, "Posicion": 6},
+                    {"Temporada": 2024, "Equipo": "Audax Italiano", "Altas": 18, "Posicion": 10},
+                    {"Temporada": 2024, "Equipo": "CD Ñublense", "Altas": 15, "Posicion": 9},
+                    {"Temporada": 2024, "Equipo": "CD Huachipato", "Altas": 15, "Posicion": 12},
+                    {"Temporada": 2024, "Equipo": "CD Cobresal", "Altas": 9, "Posicion": 13},
+                    {"Temporada": 2024, "Equipo": "CD Palestino", "Altas": 12, "Posicion": 4},
+                    {"Temporada": 2024, "Equipo": "CD Cobreloa", "Altas": 18, "Posicion": 15},
+                    {"Temporada": 2024, "Equipo": "Deportes Iquique", "Altas": 19, "Posicion": 3},
+                    {"Temporada": 2024, "Equipo": "Coquimbo Unido", "Altas": 27, "Posicion": 8},
+                    {"Temporada": 2024, "Equipo": "Deportes Copiapó", "Altas": 12, "Posicion": 16},
+                    {"Temporada": 2025, "Equipo": "CSD Colo-Colo", "Altas": 22, "Posicion": 8},
+                    {"Temporada": 2025, "Equipo": "Universidad de Chile", "Altas": 18, "Posicion": 4},
+                    {"Temporada": 2025, "Equipo": "CD Everton", "Altas": 24, "Posicion": 14},
+                    {"Temporada": 2025, "Equipo": "CD Universidad Católica", "Altas": 16, "Posicion": 2},
+                    {"Temporada": 2025, "Equipo": "Unión Española", "Altas": 15, "Posicion": 16},
+                    {"Temporada": 2025, "Equipo": "CD Huachipato", "Altas": 20, "Posicion": 9},
+                    {"Temporada": 2025, "Equipo": "CD O'Higgins", "Altas": 18, "Posicion": 3},
+                    {"Temporada": 2025, "Equipo": "Deportes Iquique", "Altas": 14, "Posicion": 15},
+                    {"Temporada": 2025, "Equipo": "Audax Italiano", "Altas": 23, "Posicion": 5},
+                    {"Temporada": 2025, "Equipo": "CD Palestino", "Altas": 14, "Posicion": 6},
+                    {"Temporada": 2025, "Equipo": "CD Ñublense", "Altas": 20, "Posicion": 10},
+                    {"Temporada": 2025, "Equipo": "Deportes La Serena", "Altas": 23, "Posicion": 13},
+                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Altas": 22, "Posicion": 1},
+                    {"Temporada": 2025, "Equipo": "Deportes Limache", "Altas": 24, "Posicion": 11},
+                    {"Temporada": 2025, "Equipo": "CD Cobresal", "Altas": 11, "Posicion": 7},
+                    {"Temporada": 2025, "Equipo": "Unión La Calera", "Altas": 25, "Posicion": 12}
+                ]
+            },
+            "params": [{ "name": "Año_Fichajes", "value": 2025, "bind": { "input": "select", "options": [2019, 2020, 2021, 2022, 2023, 2024, 2025], "name": "Temporada: " } }],
+            "transform": [
+                { "filter": "datum.Temporada == Año_Fichajes" },
+                { "calculate": "datum.Altas >= 20 ? '20+ altas' : '19- altas'", "as": "Rango" },
+                { "calculate": "datum.Equipo + ' (' + datum.Altas + ' altas)'", "as": "Label" }
+            ],
+            "layer": [
+                { 
+                    "mark": {"type": "bar", "cornerRadiusEnd": 4}, 
+                    "encoding": { 
+                        "y": {"field": "Posicion", "type": "ordinal", "sort": "ascending", "title": "Posición en Tabla"}, 
+                        "x": {"field": "Altas", "type": "quantitative", "title": "N° de Fichajes"},
+                        "color": { "field": "Rango", "type": "nominal", "scale": {"domain": ["20+ altas", "19- altas"], "range": ["#39ff14", "#555555"]} }
+                    } 
+                },
+                { "mark": {"type": "text", "align": "left", "dx": 5, "color": "white", "fontWeight": "bold"}, "encoding": { "y": {"field": "Posicion", "type": "ordinal", "sort": "ascending"}, "x": {"field": "Altas", "type": "quantitative"}, "text": {"field": "Label"} } }
+            ]
+        };
+
+        // ==========================================
+        // RENDERIZADO FINAL
+        // ==========================================
+        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false });
+        vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false });
+        vegaEmbed('#vis-grafico-fichajes', specGraficoFichajes, { "actions": false });
     </script>
 </body>
 </html>
