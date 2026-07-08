@@ -103,9 +103,10 @@
 
     <section id="reviews-306">
         <div class="reviews-container">
-            <picture class="cs-image">
-                <img src="imagenes/visualization.jpg" alt="Visualización Transferencias">
-            </picture>
+            <div style="flex: 1.5; width: 100%; background-color: rgba(13, 17, 23, 0.85); padding: 20px; border-radius: 12px; border: 2px solid #39ff14; overflow-x: auto;">
+                <div id="vis-grafico-fichajes" style="width: 100%;"></div>
+            </div>
+            
             <div class="cs-content">
                 <p class="cs-review">
                     De esta manera, el torneo dejó una lección clara: 7 de los 9 clubes que sumaron más de 20 incorporaciones durante el año terminaron de la octava posición hacia abajo, demostrando que salir a fichar en masa no siempre garantiza los mejores resultados.
@@ -405,9 +406,48 @@
             ]
         };
         
-        // Renderizar ambos gráficos dinámicamente
-        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false }).catch(console.error);
-        vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false }).catch(console.error);
+        // ==========================================
+        // 3. NUEVO GRÁFICO: FICHAJES VS TABLA (DENTRO DE reviews-306)
+        // ==========================================
+        const specGraficoFichajes = {
+            "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+            "width": "container", "height": {"step": 28}, "config": themeConfig,
+            "data": {
+                "values": [
+                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Altas": 22, "Posicion": 1},
+                    {"Temporada": 2025, "Equipo": "U. de Chile", "Altas": 18, "Posicion": 4},
+                    {"Temporada": 2025, "Equipo": "CD Everton", "Altas": 24, "Posicion": 14},
+                    {"Temporada": 2025, "Equipo": "U. Católica", "Altas": 16, "Posicion": 2},
+                    {"Temporada": 2025, "Equipo": "Unión Española", "Altas": 15, "Posicion": 16},
+                    {"Temporada": 2025, "Equipo": "Colo-Colo", "Altas": 22, "Posicion": 8}
+                    // ... (Añadir aquí el resto de datos del CSV movimientos_y_tabla)
+                ]
+            },
+            "params": [{ "name": "Año_Fichajes", "value": 2025, "bind": { "input": "select", "options": [2019, 2020, 2021, 2022, 2023, 2024, 2025], "name": "Temporada: " } }],
+            "transform": [
+                { "filter": "datum.Temporada == Año_Fichajes" },
+                { "calculate": "datum.Altas >= 20 ? '20+ altas' : '19- altas'", "as": "Rango" },
+                { "calculate": "datum.Equipo + ' (' + datum.Altas + ' altas)'", "as": "Label" }
+            ],
+            "layer": [
+                { 
+                    "mark": {"type": "bar", "cornerRadiusEnd": 4}, 
+                    "encoding": { 
+                        "y": {"field": "Posicion", "type": "ordinal", "sort": "ascending", "title": "Posición en Tabla"}, 
+                        "x": {"field": "Altas", "type": "quantitative", "title": "N° de Fichajes"},
+                        "color": { "field": "Rango", "type": "nominal", "scale": {"domain": ["20+ altas", "19- altas"], "range": ["#00aa44", "#333333"]} }
+                    } 
+                },
+                { "mark": {"type": "text", "align": "left", "dx": 5, "color": "white", "fontWeight": "bold"}, "encoding": { "y": {"field": "Posicion", "type": "ordinal", "sort": "ascending"}, "x": {"field": "Altas", "type": "quantitative"}, "text": {"field": "Label"} } }
+            ]
+        };
+
+        // ==========================================
+        // RENDERIZADO FINAL
+        // ==========================================
+        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false });
+        vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false });
+        vegaEmbed('#vis-grafico-fichajes', specGraficoFichajes, { "actions": false });
     </script>
 </body>
 </html>
