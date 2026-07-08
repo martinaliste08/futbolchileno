@@ -9,6 +9,8 @@ body {
     color: #f5f5f5;
     font-family: 'Inter', sans-serif; /* Texto base configurado en Inter */
     min-height: 100vh;
+    /* Línea añadida para el cursor del balón */
+    cursor: url('imagenes/balon_futbol.png'), default;
 }
 
 .section-standard {
@@ -135,7 +137,7 @@ body {
     text-align: left;
 }
 
-/* Sección del gráfico con fondo de estadio y bordes grises */
+
 #tech-chart-section {
     position: relative;
     background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),
@@ -172,7 +174,7 @@ body {
     margin: 0 auto;
 }
 
-/* Modificaciones específicas para el menú del nuevo gráfico interactivo */
+
 .vega-bind {
     color: #ffffff !important;
     font-family: 'Montserrat', sans-serif !important;
