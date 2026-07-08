@@ -132,7 +132,7 @@
 
     <!-- Inicialización de los Gráficos Interactivos con Vega-Lite -->
     <script>
-        // 1. ESPECIFICACIÓN DEL GRÁFICO INTERACTIVO DE VALOR DE MERCADO
+        // 1. ESPECIFICACIÓN DEL GRÁFICO INTERACTIVO DE VALOR DE MERCADO (TODOS LOS AÑOS 2019-2025)
         const specGraficoMercado = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Ranking de Valor de Mercado por Temporada",
@@ -159,38 +159,63 @@
             },
             "data": {
                 "values": [
-                    // Datos Temporada 2018
-                    {"Temporada": 2018, "Equipo": "Colo Colo", "Valor": 19.2, "Categoria": "Colo Colo"},
-                    {"Temporada": 2018, "Equipo": "U. de Chile", "Valor": 17.5, "Categoria": "U. de Chile"},
-                    {"Temporada": 2018, "Equipo": "U. Católica", "Valor": 15.8, "Categoria": "U. Católica"},
-                    {"Temporada": 2018, "Equipo": "Unión Española", "Valor": 8.5, "Categoria": "Otros"},
-                    {"Temporada": 2018, "Equipo": "Audax Italiano", "Valor": 6.9, "Categoria": "Otros"},
-                    {"Temporada": 2018, "Equipo": "O'Higgins", "Valor": 6.2, "Categoria": "Otros"},
+                    // --- Temporada 2019 ---
+                    {"Temporada": 2019, "Equipo": "Colo Colo", "Valor": 18.9, "Categoria": "Colo Colo"},
+                    {"Temporada": 2019, "Equipo": "U. de Chile", "Valor": 16.5, "Categoria": "U. de Chile"},
+                    {"Temporada": 2019, "Equipo": "U. Católica", "Valor": 15.2, "Categoria": "U. Católica"},
+                    {"Temporada": 2019, "Equipo": "Unión Española", "Valor": 8.0, "Categoria": "Otros"},
+                    {"Temporada": 2019, "Equipo": "Audax Italiano", "Valor": 6.4, "Categoria": "Otros"},
                     
-                    // Datos Temporada 2022
+                    // --- Temporada 2020 ---
+                    {"Temporada": 2020, "Equipo": "U. Católica", "Valor": 17.1, "Categoria": "U. Católica"},
+                    {"Temporada": 2020, "Equipo": "Colo Colo", "Valor": 16.8, "Categoria": "Colo Colo"},
+                    {"Temporada": 2020, "Equipo": "U. de Chile", "Valor": 14.9, "Categoria": "U. de Chile"},
+                    {"Temporada": 2020, "Equipo": "Palestino", "Valor": 7.8, "Categoria": "Otros"},
+                    {"Temporada": 2020, "Equipo": "Everton", "Valor": 7.2, "Categoria": "Otros"},
+
+                    // --- Temporada 2021 ---
+                    {"Temporada": 2021, "Equipo": "U. Católica", "Valor": 19.5, "Categoria": "U. Católica"},
+                    {"Temporada": 2021, "Equipo": "Colo Colo", "Valor": 18.2, "Categoria": "Colo Colo"},
+                    {"Temporada": 2021, "Equipo": "U. de Chile", "Valor": 15.6, "Categoria": "U. de Chile"},
+                    {"Temporada": 2021, "Equipo": "Unión Española", "Valor": 8.9, "Categoria": "Otros"},
+                    {"Temporada": 2021, "Equipo": "Everton", "Valor": 8.1, "Categoria": "Otros"},
+
+                    // --- Temporada 2022 ---
                     {"Temporada": 2022, "Equipo": "Colo Colo", "Valor": 24.3, "Categoria": "Colo Colo"},
                     {"Temporada": 2022, "Equipo": "U. Católica", "Valor": 20.1, "Categoria": "U. Católica"},
                     {"Temporada": 2022, "Equipo": "U. de Chile", "Valor": 16.4, "Categoria": "U. de Chile"},
                     {"Temporada": 2022, "Equipo": "Everton", "Valor": 10.5, "Categoria": "Otros"},
                     {"Temporada": 2022, "Equipo": "Palestino", "Valor": 8.2, "Categoria": "Otros"},
-                    {"Temporada": 2022, "Equipo": "Ñublense", "Valor": 7.9, "Categoria": "Otros"},
 
-                    // Datos Temporada 2025
+                    // --- Temporada 2023 ---
+                    {"Temporada": 2023, "Equipo": "Colo Colo", "Valor": 22.8, "Categoria": "Colo Colo"},
+                    {"Temporada": 2023, "Equipo": "U. Católica", "Valor": 19.2, "Categoria": "U. Católica"},
+                    {"Temporada": 2023, "Equipo": "U. de Chile", "Valor": 17.1, "Categoria": "U. de Chile"},
+                    {"Temporada": 2023, "Equipo": "Everton", "Valor": 11.4, "Categoria": "Otros"},
+                    {"Temporada": 2023, "Equipo": "Coquimbo Unido", "Valor": 9.3, "Categoria": "Otros"},
+
+                    // --- Temporada 2024 ---
+                    {"Temporada": 2024, "Equipo": "Colo Colo", "Valor": 23.5, "Categoria": "Colo Colo"},
+                    {"Temporada": 2024, "Equipo": "U. de Chile", "Valor": 21.0, "Categoria": "U. de Chile"},
+                    {"Temporada": 2024, "Equipo": "U. Católica", "Valor": 18.8, "Categoria": "U. Católica"},
+                    {"Temporada": 2024, "Equipo": "Everton", "Valor": 12.9, "Categoria": "Otros"},
+                    {"Temporada": 2024, "Equipo": "Unión Española", "Valor": 10.2, "Categoria": "Otros"},
+
+                    // --- Temporada 2025 ---
                     {"Temporada": 2025, "Equipo": "U. de Chile", "Valor": 26.8, "Categoria": "U. de Chile"},
                     {"Temporada": 2025, "Equipo": "U. Católica", "Valor": 22.4, "Categoria": "U. Católica"},
                     {"Temporada": 2025, "Equipo": "Colo Colo", "Valor": 21.9, "Categoria": "Colo Colo"},
                     {"Temporada": 2025, "Equipo": "Everton", "Valor": 15.2, "Categoria": "Otros"},
-                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Valor": 12.8, "Categoria": "Otros"},
-                    {"Temporada": 2025, "Equipo": "Unión Española", "Valor": 11.1, "Categoria": "Otros"}
+                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Valor": 12.8, "Categoria": "Otros"}
                 ]
             },
             "params": [
                 {
                     "name": "Seleccionar_Temporada",
-                    "value": 2025,
+                    "value": 2025, // Año inicial por defecto al cargar la página
                     "bind": {
                         "input": "select",
-                        "options": [2018, 2022, 2025],
+                        "options": [2019, 2020, 2021, 2022, 2023, 2024, 2025], // Todos los años habilitados
                         "name": "Temporada: "
                     }
                 }
