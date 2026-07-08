@@ -14,34 +14,32 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <link rel="stylesheet" href="estilos.css">
-
-    <style>
-    /* Forzamos el cursor usando una URL externa limpia y directa */
-    * {
-        cursor: url("https://cdn-icons-png.flaticon.com/32/53/53283.png") 16 16, auto !important;
-    }
-    body {
-        cursor: url("https://cdn-icons-png.flaticon.com/32/53/53283.png") 16 16, auto !important;
-    }
-
-    /* ANIMACIÓN PARA LAS TARJETAS */
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .tarjeta-animada {
-        animation: fadeInUp 0.8s ease-out forwards;
-    }
-</style>
 </head>
 <body>
+
+<section class="main-header-section" style="background-color: #0d1117 !important; border-bottom: 4px solid #444444 !important; padding: 40px 0 !important; width: 100% !important; box-sizing: border-box !important; display: block !important;">
+    <div class="header-container" style="max-width: 1200px !important; margin: 0 auto !important; padding: 0 20px !important; display: flex !important; justify-content: center !important; align-items: center !important; box-sizing: border-box !important;">
+        
+        <div class="header-brand" style="display: flex !important; align-items: center !important; gap: 25px !important; flex-wrap: nowrap !important; justify-content: center !important; text-align: center !important;">
+            
+            <img src="imagenes/balon_futbol.png" alt="Balón de Fútbol" class="header-logo" style="width: 55px !important; height: 55px !important; min-width: 55px !important; object-fit: contain !important; display: block !important;">
+            
+            <div class="header-text-group" style="display: flex !important; flex-direction: column !important; align-items: center !important;">
+                <h1 class="header-title" style="font-family: 'Montserrat', sans-serif !important; font-weight: 800 !important; color: #39ff14 !important; margin: 0 !important; font-size: 1.8rem !important; line-height: 1.2 !important; text-transform: uppercase !important; letter-spacing: 1px !important;">
+                    El mito de los millones en el fútbol chileno
+                </h1>
+                
+                <p class="header-subtitle" style="font-family: 'Inter', sans-serif !important; font-weight: 500 !important; color: #8b949e !important; margin: 8px 0 0 0 !important; font-size: 1rem !important; letter-spacing: 0.5px !important;">
+                    Un análisis de la brecha financiera y la realidad del torneo
+                </p>
+            </div>
+
+            <img src="imagenes/balon_futbol.png" alt="Balón de Fútbol" class="header-logo" style="width: 55px !important; height: 55px !important; min-width: 55px !important; object-fit: contain !important; display: block !important;">
+            
+        </div>
+
+    </div>
+</section>
 
 <section class="main-header-section" style="background-color: #0d1117 !important; border-bottom: 4px solid #444444 !important; padding: 40px 0 !important; width: 100% !important; box-sizing: border-box !important; display: block !important;">
     <div class="header-container" style="max-width: 1200px !important; margin: 0 auto !important; padding: 0 20px !important; display: flex !important; justify-content: center !important; align-items: center !important; box-sizing: border-box !important;">
