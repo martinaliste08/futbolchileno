@@ -7,10 +7,9 @@
 body {
     background-color: #000000;
     color: #f5f5f5;
-    font-family: 'Inter', sans-serif; /* Texto base configurado en Inter */
+    font-family: 'Inter', sans-serif;
     min-height: 100vh;
-    /* Línea añadida para el cursor del balón */
-    cursor: url('imagenes/balon_futbol.png'), default;
+    cursor: url('imagenes/balon_futbol.png') 16 16, default;
 }
 
 .section-standard {
