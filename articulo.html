@@ -555,9 +555,9 @@
         // ==========================================
         // RENDERIZADO FINAL
         // ==========================================
-        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false });
-        vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false });
-        vegaEmbed('#vis-grafico-fichajes', specGraficoFichajes, { "actions": false });
+        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false }).catch(console.error);
+        vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false }).catch(console.error);
+        vegaEmbed('#vis-grafico-fichajes', specGraficoFichajes, { "actions": false }).catch(console.error);
     </script>
 </body>
 </html>
