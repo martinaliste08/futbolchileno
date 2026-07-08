@@ -130,68 +130,34 @@
         </div>
     </section>
 
-   <!-- Inicialización de los Gráficos Interactivos con Vega-Lite -->
-    <script>
-        // 1. ESPECIFICACIÓN DEL GRÁFICO 1: VALOR DE MERCADO (TOP 5 PUESTOS COMPLETOS)
-        const specGraficoMercado = {
+   <script>
+        // ==========================================
+        // BASE DE DATOS 1: GRÁFICO FICHAJES VS TABLA (PROCESADA DESDE MOVIMIENTOS Y TABLA)
+        // ==========================================
+        const rawMovimientosData = [
+            {"Temporada": 2019, "Equipo": "CSD Colo-Colo", "Total altas": 22, "Posicion": 2, "Altas por traspaso": 16, "Altas libre": 6}, {"Temporada": 2019, "Equipo": "CD Universidad Católica", "Total altas": 31, "Posicion": 1, "Altas por traspaso": 29, "Altas libre": 2}, {"Temporada": 2019, "Equipo": "Universidad de Chile", "Total altas": 28, "Posicion": 15, "Altas por traspaso": 24, "Altas libre": 4}, {"Temporada": 2019, "Equipo": "Unión La Calera", "Total altas": 43, "Posicion": 4, "Altas por traspaso": 29, "Altas libre": 14}, {"Temporada": 2019, "Equipo": "Universidad de Concepción", "Total altas": 25, "Posicion": 16, "Altas por traspaso": 15, "Altas libre": 10}, {"Temporada": 2019, "Equipo": "CD Everton", "Total altas": 27, "Posicion": 11, "Altas por traspaso": 24, "Altas libre": 3}, {"Temporada": 2019, "Equipo": "Deportes Antofagasta", "Total altas": 24, "Posicion": 12, "Altas por traspaso": 20, "Altas libre": 4}, {"Temporada": 2019, "Equipo": "CD Palestino", "Total altas": 45, "Posicion": 3, "Altas por traspaso": 34, "Altas libre": 11}, {"Temporada": 2019, "Equipo": "CD Huachipato", "Total altas": 29, "Posicion": 6, "Altas por traspaso": 25, "Altas libre": 4}, {"Temporada": 2019, "Equipo": "Deportes Iquique", "Total altas": 22, "Posicion": 14, "Altas por traspaso": 10, "Altas libre": 12}, {"Temporada": 2019, "Equipo": "Unión Española", "Total altas": 23, "Posicion": 9, "Altas por traspaso": 17, "Altas libre": 6}, {"Temporada": 2019, "Equipo": "CD O'Higgins", "Total altas": 31, "Posicion": 8, "Altas por traspaso": 27, "Altas libre": 4}, {"Temporada": 2019, "Equipo": "CD Cobresal", "Total altas": 22, "Posicion": 10, "Altas por traspaso": 16, "Altas libre": 6}, {"Temporada": 2019, "Equipo": "Coquimbo Unido", "Total altas": 25, "Posicion": 5, "Altas por traspaso": 15, "Altas libre": 10}, {"Temporada": 2019, "Equipo": "Curicó Unido", "Total altas": 25, "Posicion": 13, "Altas por traspaso": 11, "Altas libre": 14}, {"Temporada": 2019, "Equipo": "Audax Italiano", "Total altas": 20, "Posicion": 7, "Altas por traspaso": 12, "Altas libre": 8}, {"Temporada": 2020, "Equipo": "CSD Colo-Colo", "Total altas": 23, "Posicion": 16, "Altas por traspaso": 19, "Altas libre": 4}, {"Temporada": 2020, "Equipo": "CD Universidad Católica", "Total altas": 23, "Posicion": 1, "Altas por traspaso": 20, "Altas libre": 3}, {"Temporada": 2020, "Equipo": "CD Everton", "Total altas": 23, "Posicion": 12, "Altas por traspaso": 19, "Altas libre": 4}, {"Temporada": 2020, "Equipo": "CD Palestino", "Total altas": 19, "Posicion": 5, "Altas por traspaso": 13, "Altas libre": 6}, {"Temporada": 2020, "Equipo": "Unión La Calera", "Total altas": 29, "Posicion": 2, "Altas por traspaso": 21, "Altas libre": 8}, {"Temporada": 2020, "Equipo": "Universidad de Chile", "Total altas": 27, "Posicion": 3, "Altas por traspaso": 22, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "CD O'Higgins", "Total altas": 22, "Posicion": 10, "Altas por traspaso": 18, "Altas libre": 4}, {"Temporada": 2020, "Equipo": "Unión Española", "Total altas": 26, "Posicion": 4, "Altas por traspaso": 21, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "Deportes Antofagasta", "Total altas": 26, "Posicion": 6, "Altas por traspaso": 21, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "CD Huachipato", "Total altas": 20, "Posicion": 8, "Altas por traspaso": 17, "Altas libre": 3}, {"Temporada": 2020, "Equipo": "Deportes Iquique", "Total altas": 22, "Posicion": 17, "Altas por traspaso": 17, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "Universidad de Concepción", "Total altas": 25, "Posicion": 14, "Altas por traspaso": 19, "Altas libre": 6}, {"Temporada": 2020, "Equipo": "Coquimbo Unido", "Total altas": 30, "Posicion": 18, "Altas por traspaso": 24, "Altas libre": 6}, {"Temporada": 2020, "Equipo": "Curicó Unido", "Total altas": 23, "Posicion": 9, "Altas por traspaso": 18, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "Audax Italiano", "Total altas": 23, "Posicion": 13, "Altas por traspaso": 18, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "CD Cobresal", "Total altas": 20, "Posicion": 7, "Altas por traspaso": 14, "Altas libre": 6}, {"Temporada": 2020, "Equipo": "Deportes La Serena", "Total altas": 30, "Posicion": 15, "Altas por traspaso": 25, "Altas libre": 5}, {"Temporada": 2020, "Equipo": "Santiago Wanderers", "Total altas": 21, "Posicion": 11, "Altas por traspaso": 16, "Altas libre": 5}, {"Temporada": 2021, "Equipo": "CSD Colo-Colo", "Total altas": 19, "Posicion": 2, "Altas por traspaso": 14, "Altas libre": 5}, {"Temporada": 2021, "Equipo": "CD Universidad Católica", "Total altas": 22, "Posicion": 1, "Altas por traspaso": 16, "Altas libre": 6}, {"Temporada": 2021, "Equipo": "CD Everton", "Total altas": 20, "Posicion": 12, "Altas por traspaso": 17, "Altas libre": 3}, {"Temporada": 2021, "Equipo": "CD Palestino", "Total altas": 18, "Posicion": 8, "Altas por traspaso": 15, "Altas libre": 3}, {"Temporada": 2021, "Equipo": "Unión La Calera", "Total altas": 26, "Posicion": 4, "Altas por traspaso": 22, "Altas libre": 4}, {"Temporada": 2021, "Equipo": "Universidad de Chile", "Total altas": 24, "Posicion": 11, "Altas por traspaso": 19, "Altas libre": 5}, {"Temporada": 2021, "Equipo": "CD O'Higgins", "Total altas": 20, "Posicion": 13, "Altas por traspaso": 16, "Altas libre": 4}, {"Temporada": 2021, "Equipo": "Unión Española", "Total altas": 26, "Posicion": 5, "Altas por traspaso": 22, "Altas libre": 4}, {"Temporada": 2021, "Equipo": "Deportes Antofagasta", "Total altas": 22, "Posicion": 6, "Altas por traspaso": 16, "Altas libre": 6}, {"Temporada": 2021, "Equipo": "CD Huachipato", "Total altas": 15, "Posicion": 15, "Altas por traspaso": 14, "Altas libre": 1}, {"Temporada": 2021, "Equipo": "Curicó Unido", "Total altas": 23, "Posicion": 14, "Altas por traspaso": 18, "Altas libre": 5}, {"Temporada": 2021, "Equipo": "Audax Italiano", "Total altas": 14, "Posicion": 3, "Altas por traspaso": 10, "Altas libre": 4}, {"Temporada": 2021, "Equipo": "CD Cobresal", "Total altas": 18, "Posicion": 9, "Altas por traspaso": 16, "Altas libre": 2}, {"Temporada": 2021, "Equipo": "Deportes La Serena", "Total altas": 22, "Posicion": 10, "Altas por traspaso": 16, "Altas libre": 6}, {"Temporada": 2021, "Equipo": "Santiago Wanderers", "Total altas": 19, "Posicion": 17, "Altas por traspaso": 15, "Altas libre": 4}, {"Temporada": 2021, "Equipo": "CD Ñublense", "Total altas": 26, "Posicion": 7, "Altas por traspaso": 18, "Altas libre": 8}, {"Temporada": 2021, "Equipo": "CD Melipilla", "Total altas": 27, "Posicion": 16, "Altas por traspaso": 19, "Altas libre": 8}, {"Temporada": 2022, "Equipo": "CSD Colo-Colo", "Total altas": 16, "Posicion": 1, "Altas por traspaso": 12, "Altas libre": 4}, {"Temporada": 2022, "Equipo": "CD Universidad Católica", "Total altas": 23, "Posicion": 6, "Altas por traspaso": 17, "Altas libre": 6}, {"Temporada": 2022, "Equipo": "CD Everton", "Total altas": 18, "Posicion": 9, "Altas por traspaso": 13, "Altas libre": 5}, {"Temporada": 2022, "Equipo": "CD Palestino", "Total altas": 16, "Posicion": 4, "Altas por traspaso": 13, "Altas libre": 3}, {"Temporada": 2022, "Equipo": "Unión La Calera", "Total altas": 24, "Posicion": 11, "Altas por traspaso": 19, "Altas libre": 5}, {"Temporada": 2022, "Equipo": "Universidad de Chile", "Total altas": 20, "Posicion": 13, "Altas por traspaso": 15, "Altas libre": 5}, {"Temporada": 2022, "Equipo": "CD O'Higgins", "Total altas": 17, "Posicion": 8, "Altas por traspaso": 14, "Altas libre": 3}, {"Temporada": 2022, "Equipo": "Unión Española", "Total altas": 22, "Posicion": 5, "Altas por traspaso": 17, "Altas libre": 5}, {"Temporada": 2022, "Equipo": "Deportes Antofagasta", "Total altas": 15, "Posicion": 16, "Altas por traspaso": 11, "Altas libre": 4}, {"Temporada": 2022, "Equipo": "CD Huachipato", "Total altas": 15, "Posicion": 12, "Altas por traspaso": 11, "Altas libre": 4}, {"Temporada": 2022, "Equipo": "Coquimbo Unido", "Total altas": 24, "Posicion": 14, "Altas por traspaso": 16, "Altas libre": 8}, {"Temporada": 2022, "Equipo": "Curicó Unido", "Total altas": 15, "Posicion": 3, "Altas por traspaso": 11, "Altas libre": 4}, {"Temporada": 2022, "Equipo": "Audax Italiano", "Total altas": 16, "Posicion": 7, "Altas por traspaso": 11, "Altas libre": 5}, {"Temporada": 2022, "Equipo": "CD Cobresal", "Total altas": 14, "Posicion": 5, "Altas por traspaso": 10, "Altas libre": 4}, {"Temporada": 2022, "Equipo": "Deportes La Serena", "Total altas": 19, "Posicion": 15, "Altas por traspaso": 13, "Altas libre": 6}, {"Temporada": 2022, "Equipo": "CD Ñublense", "Total altas": 19, "Posicion": 2, "Altas por traspaso": 13, "Altas libre": 6}, {"Temporada": 2023, "Equipo": "CSD Colo-Colo", "Total altas": 21, "Posicion": 3, "Altas por traspaso": 15, "Altas libre": 6}, {"Temporada": 2023, "Equipo": "CD Universidad Católica", "Total altas": 16, "Posicion": 7, "Altas por traspaso": 13, "Altas libre": 3}, {"Temporada": 2023, "Equipo": "CD Everton", "Total altas": 17, "Posicion": 6, "Altas por traspaso": 14, "Altas libre": 3}, {"Temporada": 2023, "Equipo": "CD Palestino", "Total altas": 11, "Posicion": 4, "Altas por traspaso": 8, "Altas libre": 3}, {"Temporada": 2023, "Equipo": "Unión La Calera", "Total altas": 23, "Posicion": 8, "Altas por traspaso": 17, "Altas libre": 6}, {"Temporada": 2023, "Equipo": "Universidad de Chile", "Total altas": 13, "Posicion": 9, "Altas por traspaso": 10, "Altas libre": 3}, {"Temporada": 2023, "Equipo": "CD O'Higgins", "Total altas": 17, "Posicion": 11, "Altas por traspaso": 13, "Altas libre": 4}, {"Temporada": 2023, "Equipo": "Unión Española", "Total altas": 17, "Posicion": 10, "Altas por traspaso": 13, "Altas libre": 4}, {"Temporada": 2023, "Equipo": "CD Huachipato", "Total altas": 15, "Posicion": 1, "Altas por traspaso": 11, "Altas libre": 4}, {"Temporada": 2023, "Equipo": "Coquimbo Unido", "Total altas": 20, "Posicion": 5, "Altas por traspaso": 13, "Altas libre": 7}, {"Temporada": 2023, "Equipo": "Curicó Unido", "Total altas": 19, "Posicion": 16, "Altas por traspaso": 12, "Altas libre": 7}, {"Temporada": 2023, "Equipo": "Audax Italiano", "Total altas": 15, "Posicion": 13, "Altas por traspaso": 11, "Altas libre": 4}, {"Temporada": 2023, "Equipo": "CD Cobresal", "Total altas": 12, "Posicion": 2, "Altas por traspaso": 9, "Altas libre": 3}, {"Temporada": 2023, "Equipo": "CD Ñublense", "Total altas": 20, "Posicion": 12, "Altas por traspaso": 14, "Altas libre": 6}, {"Temporada": 2023, "Equipo": "CD Copiapó", "Total altas": 24, "Posicion": 14, "Altas por traspaso": 17, "Altas libre": 7}, {"Temporada": 2023, "Equipo": "CD Magallanes", "Total altas": 18, "Posicion": 15, "Altas por traspaso": 11, "Altas libre": 7}, {"Temporada": 2024, "Equipo": "CSD Colo-Colo", "Total altas": 11, "Posicion": 1, "Altas por traspaso": 7, "Altas libre": 4}, {"Temporada": 2024, "Equipo": "CD Universidad Católica", "Total altas": 14, "Posicion": 3, "Altas por traspaso": 11, "Altas libre": 3}, {"Temporada": 2024, "Equipo": "CD Everton", "Total altas": 19, "Posicion": 7, "Altas por traspaso": 13, "Altas libre": 6}, {"Temporada": 2024, "Equipo": "Unión La Calera", "Total altas": 25, "Posicion": 11, "Altas por traspaso": 16, "Altas libre": 9}, {"Temporada": 2024, "Equipo": "Universidad de Chile", "Total altas": 13, "Posicion": 2, "Altas por traspaso": 9, "Altas libre": 4}, {"Temporada": 2024, "Equipo": "CD O'Higgins", "Total altas": 16, "Posicion": 14, "Altas por traspaso": 10, "Altas libre": 6}, {"Temporada": 2024, "Equipo": "Unión Española", "Total altas": 17, "Posicion": 6, "Altas por traspaso": 12, "Altas libre": 5}, {"Temporada": 2024, "Equipo": "Audax Italiano", "Total altas": 17, "Posicion": 10, "Altas por traspaso": 11, "Altas libre": 6}, {"Temporada": 2024, "Equipo": "CD Ñublense", "Total altas": 15, "Posicion": 9, "Altas por traspaso": 7, "Altas libre": 8}, {"Temporada": 2024, "Equipo": "CD Huachipato", "Total altas": 15, "Posicion": 12, "Altas por traspaso": 12, "Altas libre": 3}, {"Temporada": 2024, "Equipo": "CD Cobresal", "Total altas": 9, "Posicion": 13, "Altas por traspaso": 4, "Altas libre": 5}, {"Temporada": 2024, "Equipo": "CD Palestino", "Total altas": 12, "Posicion": 4, "Altas por traspaso": 7, "Altas libre": 5}, {"Temporada": 2024, "Equipo": "CD Cobreloa", "Total altas": 18, "Posicion": 15, "Altas por traspaso": 12, "Altas libre": 6}, {"Temporada": 2024, "Equipo": "Deportes Iquique", "Total altas": 19, "Posicion": 3, "Altas por traspaso": 6, "Altas libre": 13}, {"Temporada": 2024, "Equipo": "Coquimbo Unido", "Total altas": 27, "Posicion": 8, "Altas por traspaso": 12, "Altas libre": 15}, {"Temporada": 2024, "Equipo": "Deportes Copiapó", "Total altas": 12, "Posicion": 16, "Altas por traspaso": 8, "Altas libre": 4}, {"Temporada": 2025, "Equipo": "CSD Colo-Colo", "Total altas": 22, "Posicion": 8, "Altas por traspaso": 18, "Altas libre": 4}, {"Temporada": 2025, "Equipo": "Universidad de Chile", "Total altas": 18, "Posicion": 4, "Altas por traspaso": 14, "Altas libre": 4}, {"Temporada": 2025, "Equipo": "CD Everton", "Total altas": 24, "Posicion": 14, "Altas por traspaso": 18, "Altas libre": 6}, {"Temporada": 2025, "Equipo": "CD Universidad Católica", "Total altas": 16, "Posicion": 2, "Altas por traspaso": 14, "Altas libre": 2}, {"Temporada": 2025, "Equipo": "Unión Española", "Total altas": 15, "Posicion": 16, "Altas por traspaso": 9, "Altas libre": 6}, {"Temporada": 2025, "Equipo": "CD Huachipato", "Total altas": 20, "Posicion": 9, "Altas por traspaso": 14, "Altas libre": 6}, {"Temporada": 2025, "Equipo": "CD O'Higgins", "Total altas": 18, "Posicion": 3, "Altas por traspaso": 10, "Altas libre": 8}, {"Temporada": 2025, "Equipo": "Deportes Iquique", "Total altas": 14, "Posicion": 15, "Altas por traspaso": 4, "Altas libre": 10}, {"Temporada": 2025, "Equipo": "Audax Italiano", "Total altas": 23, "Posicion": 5, "Altas por traspaso": 16, "Altas libre": 7}, {"Temporada": 2025, "Equipo": "CD Palestino", "Total altas": 14, "Posicion": 6, "Altas por traspaso": 11, "Altas libre": 3}, {"Temporada": 2025, "Equipo": "CD Ñublense", "Total altas": 20, "Posicion": 10, "Altas por traspaso": 9, "Altas libre": 11}, {"Temporada": 2025, "Equipo": "Deportes La Serena", "Total altas": 23, "Posicion": 13, "Altas por traspaso": 12, "Altas libre": 11}, {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Total altas": 22, "Posicion": 1, "Altas por traspaso": 16, "Altas libre": 6}, {"Temporada": 2025, "Equipo": "Deportes Limache", "Total altas": 24, "Posicion": 11, "Altas por traspaso": 7, "Altas libre": 17}, {"Temporada": 2025, "Equipo": "CD Cobresal", "Total altas": 11, "Posicion": 7, "Altas por traspaso": 3, "Altas libre": 8}, {"Temporada": 2025, "Equipo": "Unión La Calera", "Total altas": 25, "Posicion": 12, "Altas por traspaso": 14, "Altas libre": 11}
+        ];
+
+        // ==========================================
+        // SPEC GRÁFICO 1 NUEVO: FICHAJES VS TABLA (REEMPLAZA VISUALIZATION.JPG)
+        // ==========================================
+        const specGraficoFichajes = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-            "description": "Ranking de Valor de Mercado por Temporada",
+            "description": "Tabla de Posiciones vs Cantidad de Fichajes",
             "width": "container",
-            "height": 280,
+            "height": {"step": 32},
             "config": {
                 "background": "transparent",
                 "text": {"font": "Inter", "color": "#ffffff"},
                 "axis": {
                     "labelFont": "Inter", "titleFont": "Montserrat", "labelColor": "#e0e0e0", "titleColor": "#ffffff",
                     "gridColor": "#222222", "domainColor": "#555555"
-                },
-                "legend": {
-                    "labelFont": "Inter", "titleFont": "Montserrat", "labelColor": "#ffffff", "titleColor": "#39ff14",
-                    "orient": "top"
                 }
             },
-            "data": {
-                "values": [
-                    {"Temporada": 2019, "Equipo": "Colo Colo", "Valor": 18.9, "Categoria": "Colo Colo"},
-                    {"Temporada": 2019, "Equipo": "U. de Chile", "Valor": 16.5, "Categoria": "U. de Chile"},
-                    {"Temporada": 2019, "Equipo": "U. Católica", "Valor": 15.2, "Categoria": "U. Católica"},
-                    {"Temporada": 2019, "Equipo": "Unión Española", "Valor": 8.0, "Categoria": "Otros"},
-                    {"Temporada": 2019, "Equipo": "Audax Italiano", "Valor": 6.4, "Categoria": "Otros"},
-                    {"Temporada": 2020, "Equipo": "U. Católica", "Valor": 17.1, "Categoria": "U. Católica"},
-                    {"Temporada": 2020, "Equipo": "Colo Colo", "Valor": 16.8, "Categoria": "Colo Colo"},
-                    {"Temporada": 2020, "Equipo": "U. de Chile", "Valor": 14.9, "Categoria": "U. de Chile"},
-                    {"Temporada": 2020, "Equipo": "Palestino", "Valor": 7.8, "Categoria": "Otros"},
-                    {"Temporada": 2020, "Equipo": "Everton", "Valor": 7.2, "Categoria": "Otros"},
-                    {"Temporada": 2021, "Equipo": "U. Católica", "Valor": 19.5, "Categoria": "U. Católica"},
-                    {"Temporada": 2021, "Equipo": "Colo Colo", "Valor": 18.2, "Categoria": "Colo Colo"},
-                    {"Temporada": 2021, "Equipo": "U. de Chile", "Valor": 15.6, "Categoria": "U. de Chile"},
-                    {"Temporada": 2021, "Equipo": "Unión Española", "Valor": 8.9, "Categoria": "Otros"},
-                    {"Temporada": 2021, "Equipo": "Everton", "Valor": 8.1, "Categoria": "Otros"},
-                    {"Temporada": 2022, "Equipo": "Colo Colo", "Valor": 24.3, "Categoria": "Colo Colo"},
-                    {"Temporada": 2022, "Equipo": "U. Católica", "Valor": 20.1, "Categoria": "U. Católica"},
-                    {"Temporada": 2022, "Equipo": "U. de Chile", "Valor": 16.4, "Categoria": "U. de Chile"},
-                    {"Temporada": 2022, "Equipo": "Everton", "Valor": 10.5, "Categoria": "Otros"},
-                    {"Temporada": 2022, "Equipo": "Palestino", "Valor": 8.2, "Categoria": "Otros"},
-                    {"Temporada": 2023, "Equipo": "Colo Colo", "Valor": 22.8, "Categoria": "Colo Colo"},
-                    {"Temporada": 2023, "Equipo": "U. Católica", "Valor": 19.2, "Categoria": "U. Católica"},
-                    {"Temporada": 2023, "Equipo": "U. de Chile", "Valor": 17.1, "Categoria": "U. de Chile"},
-                    {"Temporada": 2023, "Equipo": "Everton", "Valor": 11.4, "Categoria": "Otros"},
-                    {"Temporada": 2023, "Equipo": "Coquimbo Unido", "Valor": 9.3, "Categoria": "Otros"},
-                    {"Temporada": 2024, "Equipo": "Colo Colo", "Valor": 23.5, "Categoria": "Colo Colo"},
-                    {"Temporada": 2024, "Equipo": "U. de Chile", "Valor": 21.0, "Categoria": "U. de Chile"},
-                    {"Temporada": 2024, "Equipo": "U. Católica", "Valor": 18.8, "Categoria": "U. Católica"},
-                    {"Temporada": 2024, "Equipo": "Everton", "Valor": 12.9, "Categoria": "Otros"},
-                    {"Temporada": 2024, "Equipo": "Unión Española", "Valor": 10.2, "Categoria": "Otros"},
-                    {"Temporada": 2025, "Equipo": "U. de Chile", "Valor": 26.8, "Categoria": "U. de Chile"},
-                    {"Temporada": 2025, "Equipo": "U. Católica", "Valor": 22.4, "Categoria": "U. Católica"},
-                    {"Temporada": 2025, "Equipo": "Colo Colo", "Valor": 21.9, "Categoria": "Colo Colo"},
-                    {"Temporada": 2025, "Equipo": "Everton", "Valor": 15.2, "Categoria": "Otros"},
-                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Valor": 12.8, "Categoria": "Otros"}
-                ]
-            },
+            "data": { "values": rawMovimientosData },
             "params": [
                 {
-                    "name": "Seleccionar_Temporada",
+                    "name": "Temporada_Seleccionada",
                     "value": 2025,
                     "bind": {
                         "input": "select",
@@ -201,21 +167,69 @@
                 }
             ],
             "transform": [
-                {"filter": "datum.Temporada == Seleccionar_Temporada"}
+                { "filter": "datum.Temporada == Temporada_Seleccionada" },
+                { "calculate": "datum.Total_altas >= 20 ? '20+ altas' : '19- altas'", "as": "Rango_Altas" },
+                { "calculate": "datum.Equipo + ' (' + datum['Total altas'] + ' altas)'", "as": "EtiquetaCompleta" }
             ],
-            "mark": {"type": "bar", "cornerRadiusEnd": 4},
-            "encoding": {
-                "x": {"field": "Valor", "type": "quantitative", "scale": {"domain": [0, 30]}, "title": "Valor de Mercado Total (Millones USD)"},
-                "y": {"field": "Equipo", "type": "nominal", "title": null, "sort": "-x"},
-                "color": {
-                    "field": "Categoria", "type": "nominal", "title": "Categoría",
-                    "scale": {"domain": ["Colo Colo", "U. de Chile", "U. Católica", "Otros"], "range": ["#222222", "#0047AB", "#87CEEB", "#A0A0A0"]}
+            "layer": [
+                {
+                    "mark": { "type": "bar", "cornerRadiusEnd": 4 },
+                    "encoding": {
+                        "y": {
+                            "field": "Posicion",
+                            "type": "ordinal",
+                            "title": "Posición Final en Tabla",
+                            "sort": "ascending"
+                        },
+                        "x": {
+                            "field": "Total altas",
+                            "type": "quantitative",
+                            "title": "Cantidad de Fichajes (Altas)"
+                        },
+                        "color": {
+                            "field": "Rango_Altas",
+                            "type": "nominal",
+                            "title": "Rango de Fichajes",
+                            "scale": {
+                                "domain": ["20+ altas", "19- altas"],
+                                "range": ["#00aa44", "#333333"]
+                            },
+                            "legend": {
+                                "labelFont": "Inter", "titleFont": "Montserrat", "labelColor": "#ffffff", "titleColor": "#39ff14",
+                                "orient": "top"
+                            }
+                        },
+                        "tooltip": [
+                            { "field": "Posicion", "title": "Lugar en Tabla" },
+                            { "field": "Equipo", "title": "Club" },
+                            { "field": "Total altas", "title": "Fichajes Totales" },
+                            { "field": "Altas por traspaso", "title": "Por Traspaso" },
+                            { "field": "Altas libre", "title": "Libres" }
+                        ]
+                    }
                 },
-                "tooltip": [{"field": "Equipo"}, {"field": "Valor", "title": "Valor (M$)"}]
-            }
+                {
+                    "mark": {
+                        "type": "text",
+                        "align": "left",
+                        "baseline": "middle",
+                        "dx": 6,
+                        "font": "Inter",
+                        "fontWeight": "bold",
+                        "color": "#ffffff"
+                    },
+                    "encoding": {
+                        "y": { "field": "Posicion", "type": "ordinal", "sort": "ascending" },
+                        "x": { "field": "Total altas", "type": "quantitative" },
+                        "text": { "field": "EtiquetaCompleta", "type": "nominal" }
+                    }
+                }
+            ]
         };
 
-        // 2. ESPECIFICACIÓN DEL GRÁFICO 2: TÉCNICOS (CON DATA REAL COMPLETA DESDE EL CSV)
+        // ==========================================
+        // BASE DE DATOS 2: GRÁFICO TÉCNICOS (CON DATA REAL COMPLETA DESDE TU CSV ANTERIOR)
+        // ==========================================
         const specGraficoTecnicos = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Cantidad de técnicos por equipo y posición en el torneo",
@@ -264,7 +278,7 @@
                     {"Temporada": 2020, "Equipo": "Audax Italiano", "Tecnicos": 2, "Posicion": 13},
                     {"Temporada": 2020, "Equipo": "CD Cobresal", "Tecnicos": 1, "Posicion": 7},
                     {"Temporada": 2020, "Equipo": "Deportes La Serena", "Tecnicos": 2, "Posicion": 15},
-                    {"Temporada": 2020, "Equipo": "CD Santiago Wanderers", "Tecnicos": 1, "Posicion": 11},
+                    {"Temporada": 2020, "Equipo": "Santiago Wanderers", "Tecnicos": 1, "Posicion": 11},
                     {"Temporada": 2021, "Equipo": "CSD Colo-Colo", "Tecnicos": 1, "Posicion": 2},
                     {"Temporada": 2021, "Equipo": "CD Universidad Católica", "Tecnicos": 3, "Posicion": 1},
                     {"Temporada": 2021, "Equipo": "CD Everton", "Tecnicos": 1, "Posicion": 12},
@@ -280,7 +294,7 @@
                     {"Temporada": 2021, "Equipo": "CD Cobresal", "Tecnicos": 1, "Posicion": 9},
                     {"Temporada": 2021, "Equipo": "Deportes La Serena", "Tecnicos": 2, "Posicion": 10},
                     {"Temporada": 2021, "Equipo": "CD Melipilla", "Tecnicos": 2, "Posicion": 16},
-                    {"Temporada": 2021, "Equipo": "CD Santiago Wanderers", "Tecnicos": 3, "Posicion": 17},
+                    {"Temporada": 2021, "Equipo": "Santiago Wanderers", "Tecnicos": 3, "Posicion": 17},
                     {"Temporada": 2021, "Equipo": "CD Ñublense", "Tecnicos": 1, "Posicion": 7},
                     {"Temporada": 2022, "Equipo": "CSD Colo-Colo", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2022, "Equipo": "CD Universidad Católica", "Tecnicos": 2, "Posicion": 6},
@@ -331,13 +345,13 @@
                     {"Temporada": 2024, "Equipo": "CD Cobreloa", "Tecnicos": 3, "Posicion": 15},
                     {"Temporada": 2024, "Equipo": "Deportes Iquique", "Tecnicos": 1, "Posicion": 5},
                     {"Temporada": 2025, "Equipo": "CSD Colo-Colo", "Tecnicos": 2, "Posicion": 8},
-                    {"Temporada": 2025, "Equipo": "CD Universidad Católica", "Tecnicos": 3, "Posicion": 2},
+                    {"Temporada": 2025, "Equipo": "CD Universidad Católica", "Tecnicos": 3, "Posicion": 3},
                     {"Temporada": 2025, "Equipo": "CD Palestino", "Tecnicos": 1, "Posicion": 6},
-                    {"Temporada": 2025, "Equipo": "Universidad de Chile", "Tecnicos": 1, "Posicion": 4},
-                    {"Temporada": 2025, "Equipo": "CD O'Higgins", "Tecnicos": 2, "Posicion": 3},
+                    {"Temporada": 2025, "Equipo": "Universidad de Chile", "Tecnicos": 1, "Posicion": 2},
+                    {"Temporada": 2025, "Equipo": "CD O'Higgins", "Tecnicos": 2, "Posicion": 5},
                     {"Temporada": 2025, "Equipo": "Unión Española", "Tecnicos": 2, "Posicion": 16},
                     {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Tecnicos": 1, "Posicion": 1},
-                    {"Temporada": 2025, "Equipo": "Audax Italiano", "Tecnicos": 2, "Posicion": 5},
+                    {"Temporada": 2025, "Equipo": "Audax Italiano", "Tecnicos": 2, "Posicion": 6},
                     {"Temporada": 2025, "Equipo": "CD Everton", "Tecnicos": 4, "Posicion": 14},
                     {"Temporada": 2025, "Equipo": "Deportes La Serena", "Tecnicos": 4, "Posicion": 13},
                     {"Temporada": 2025, "Equipo": "CD Huachipato", "Tecnicos": 1, "Posicion": 9},
@@ -405,8 +419,8 @@
             ]
         };
         
-        // Renderizar ambos gráficos dinámicamente
-        vegaEmbed('#vis-grafico-mercado', specGraficoMercado, { "actions": false }).catch(console.error);
+        // Renderizar ambos gráficos dinámicamente de forma limpia
+        vegaEmbed('#vis-grafico-mercado', specGraficoFichajes, { "actions": false }).catch(console.error);
         vegaEmbed('#vis-grafico-tecnicos', specGraficoTecnicos, { "actions": false }).catch(console.error);
     </script>
 </body>
