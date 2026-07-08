@@ -131,7 +131,7 @@
     </section>
 
    <script>
-        // 1. ESPECIFICACIÓN DEL GRÁFICO 1: VALOR DE MERCADO (AÑOS 2019-2025)
+        // 1. ESPECIFICACIÓN DEL GRÁFICO 1: VALOR DE MERCADO
         const specGraficoMercado = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Ranking de Valor de Mercado por Temporada",
@@ -155,7 +155,6 @@
                     {"Temporada": 2019, "Equipo": "U. de Chile", "Valor": 16.5, "Categoria": "U. de Chile"},
                     {"Temporada": 2019, "Equipo": "U. Católica", "Valor": 15.2, "Categoria": "U. Católica"},
                     {"Temporada": 2019, "Equipo": "Unión Española", "Valor": 8.0, "Categoria": "Otros"},
-                    {"Temporada": 2019, "Equipo": "Audax Italiano", "Valor": 6.4, "Categoria": "Otros"},
                     {"Temporada": 2020, "Equipo": "U. Católica", "Valor": 17.1, "Categoria": "U. Católica"},
                     {"Temporada": 2020, "Equipo": "Colo Colo", "Valor": 16.8, "Categoria": "Colo Colo"},
                     {"Temporada": 2020, "Equipo": "U. de Chile", "Valor": 14.9, "Categoria": "U. de Chile"},
@@ -173,9 +172,7 @@
                     {"Temporada": 2024, "Equipo": "U. Católica", "Valor": 18.8, "Categoria": "U. Católica"},
                     {"Temporada": 2025, "Equipo": "U. de Chile", "Valor": 26.8, "Categoria": "U. de Chile"},
                     {"Temporada": 2025, "Equipo": "U. Católica", "Valor": 22.4, "Categoria": "U. Católica"},
-                    {"Temporada": 2025, "Equipo": "Colo Colo", "Valor": 21.9, "Categoria": "Colo Colo"},
-                    {"Temporada": 2025, "Equipo": "Everton", "Valor": 15.2, "Categoria": "Otros"},
-                    {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Valor": 12.8, "Categoria": "Otros"}
+                    {"Temporada": 2025, "Equipo": "Colo Colo", "Valor": 21.9, "Categoria": "Colo Colo"}
                 ]
             },
             "params": [
@@ -204,12 +201,12 @@
             }
         };
 
-        // 2. ESPECIFICACIÓN CORREGIDA DEL GRÁFICO 2: ALTURA DINÁMICA CON "STEP"
+        // 2. ESPECIFICACIÓN DEL GRÁFICO 2: TÉCNICOS (CON DATOS COMPLETOS 2019-2025)
         const specGraficoTecnicos = {
             "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
             "description": "Cantidad de técnicos por equipo y posición en el torneo",
             "width": "container",
-            "height": {"step": 30}, // CAMBIO CLAVE: Asigna 30px de alto por cada equipo. Evita que se amontonen.
+            "height": {"step": 32}, // Da excelente espacio vertical por cada barra para evitar recortes
             "config": {
                 "background": "transparent",
                 "text": {"font": "Inter", "color": "#ffffff"},
@@ -220,16 +217,43 @@
             },
             "data": {
                 "values": [
+                    // --- TEMPORADA 2019 ---
                     {"Temporada": 2019, "Equipo": "U. Católica", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2019, "Equipo": "Colo Colo", "Tecnicos": 2, "Posicion": 2},
                     {"Temporada": 2019, "Equipo": "Palestino", "Tecnicos": 1, "Posicion": 3},
                     {"Temporada": 2019, "Equipo": "U. de Chile", "Tecnicos": 3, "Posicion": 14},
-                    
+
+                    // --- TEMPORADA 2020 ---
+                    {"Temporada": 2020, "Equipo": "U. Católica", "Tecnicos": 1, "Posicion": 1},
+                    {"Temporada": 2020, "Equipo": "Unión La Calera", "Tecnicos": 1, "Posicion": 2},
+                    {"Temporada": 2020, "Equipo": "U. de Chile", "Tecnicos": 2, "Posicion": 3},
+                    {"Temporada": 2020, "Equipo": "Colo Colo", "Tecnicos": 3, "Posicion": 16},
+
+                    // --- TEMPORADA 2021 ---
+                    {"Temporada": 2021, "Equipo": "U. Católica", "Tecnicos": 3, "Posicion": 1},
+                    {"Temporada": 2021, "Equipo": "Colo Colo", "Tecnicos": 1, "Posicion": 2},
+                    {"Temporada": 2021, "Equipo": "Audax Italiano", "Tecnicos": 1, "Posicion": 3},
+                    {"Temporada": 2021, "Equipo": "U. de Chile", "Tecnicos": 3, "Posicion": 11},
+
+                    // --- TEMPORADA 2022 ---
+                    {"Temporada": 2022, "Equipo": "Colo Colo", "Tecnicos": 1, "Posicion": 1},
+                    {"Temporada": 2022, "Equipo": "Ñublense", "Tecnicos": 1, "Posicion": 2},
+                    {"Temporada": 2022, "Equipo": "Curicó Unido", "Tecnicos": 1, "Posicion": 3},
+                    {"Temporada": 2022, "Equipo": "U. de Chile", "Tecnicos": 3, "Posicion": 13},
+
+                    // --- TEMPORADA 2023 ---
+                    {"Temporada": 2023, "Equipo": "Huachipato", "Tecnicos": 1, "Posicion": 1},
+                    {"Temporada": 2023, "Equipo": "Cobresal", "Tecnicos": 1, "Posicion": 2},
+                    {"Temporada": 2023, "Equipo": "Colo Colo", "Tecnicos": 1, "Posicion": 3},
+                    {"Temporada": 2023, "Equipo": "U. Católica", "Tecnicos": 2, "Posicion": 7},
+
+                    // --- TEMPORADA 2024 ---
                     {"Temporada": 2024, "Equipo": "Colo Colo", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2024, "Equipo": "U. de Chile", "Tecnicos": 1, "Posicion": 2},
                     {"Temporada": 2024, "Equipo": "U. Católica", "Tecnicos": 2, "Posicion": 3},
-                    {"Temporada": 2024, "Equipo": "Cobreloa", "Tecnicos": 1, "Posicion": 15},
+                    {"Temporada": 2024, "Equipo": "Cobreloa", "Tecnicos": 2, "Posicion": 15},
 
+                    // --- TEMPORADA 2025 ---
                     {"Temporada": 2025, "Equipo": "Coquimbo Unido", "Tecnicos": 1, "Posicion": 1},
                     {"Temporada": 2025, "Equipo": "U. de Chile", "Tecnicos": 1, "Posicion": 2},
                     {"Temporada": 2025, "Equipo": "U. Católica", "Tecnicos": 3, "Posicion": 3},
@@ -250,7 +274,7 @@
             ],
             "transform": [
                 {"filter": "datum.Temporada == Temporada_Seleccionada"},
-                {"calculate": " '(' + datum.Posicion + '°)' ", "as": "TextoPosicion"}
+                {"calculate": " ' (' + datum.Posicion + '°)' ", "as": "TextoPosicion"}
             ],
             "layer": [
                 {
