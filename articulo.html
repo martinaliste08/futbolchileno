@@ -14,6 +14,32 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <link rel="stylesheet" href="estilos.css">
+
+    <style>
+    /* Fuerza el cursor de balón desde el mismísimo HTML */
+    * {
+        cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH6AcHDg0XChw6bAAAAwZJREFUWMPFll1oU2cYx3/Peb9uTk7SNDVpG6vSWhfrVre6gXNhbtebUIbQC8GLvVvXvTvBy70Z7G6wN5uXeyMYXmzsYgNn9mId6mIdU6u06WeSND9u8nMec969SdsY09S0bXvghYfD+fB7fvx//g9P8B9beI7Ph0v/vI2wM6FmREpZKKXG+wZGKqvXfKmqatXp6X6gE/gN6DoD8NPrqAAdEwA6wN/A6Z/P7v/S7XbXjZ08Xg6wZctvM0f+NfCgR/Ksc7YCH9D2rPOfALf8gYFhKWWVUnbZ6ehf9gW6gS6U7m9rre9uU2u9DshSygHgeSmlxvXND4CjUkpdUf5gGdBup/WtwAcopfS82qUAlFJ6gW8opW7pG0C7291aI6WMCvCjEELZ0X48v0X5/bUf2D87k85uA9b8vTf0Yl3dOkr5XgDoB6YAbgB9FwBCCHXm77//FkIoAOlMpjN88/y4fO/yRwCQUmox7QfD078MhE6fG63G9I0AAGM/XNqXN64/7pWfHh8rN1wAoXjcsCyrb2BgZAnAn7/vFwDIsgIAw7L6DAsAyzKWAEwZAG3bS2k/eDo/Hw37L8D2g7D9oBfA9vOdfmP+pS576qWeXN3T/2Zf788BvL8YpPzb6Y6vE8IeWj7jB8PZ8S6V6e+K1mZf/17gAziwO/bX7XNfC7vD9gP7+GffFmCHw+EQb6T9oK4v1bK6D132xOvx/IatwFHgS9peAFp9T+bX/XfPfeM/+06glGIEoA8Yp5S3A8D+p6/T06v7+g8Cg8AxdWkR/5O79wVfA0SAs0C8o6PjaUdHx9N6I96Mxxv690CAtfXGsCwrvPzZgwcPx0IInshkNoV++9vXNq4XgVkgvK5vYv/o9LkJgL4eWfEPhU8u9H6x4Hw6fWbWbIQQAsCyrMhS+p2YIIDtB23bXvInP3w2P69XwA6SgE6A9R9OAnbYDoD1/07wN+wUvP0AisYAAAAASUVORK5CYII=") 16 16, default !important;
+    }
+    body {
+        cursor: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH6AcHDg0XChw6bAAAAwZJREFUWMPFll1oU2cYx3/Peb9uTk7SNDVpG6vSWhfrVre6gXNhbtebUIbQC8GLvVvXvTvBy70Z7G6wN5uXeyMYXmzsYgNn9mId6mIdU6u06WeSND9u8nMec969SdsY09S0bXvghYfD+fB7fvx//g9P8B9beI7Ph0v/vI2wM6FmREpZKKXG+wZGKqvXfKmqatXp6X6gE/gN6DoD8NPrqAAdEwA6wN/A6Z/P7v/S7XbXjZ08Xg6wZctvM0f+NfCgR/Ksc7YCH9D2rPOfALf8gYFhKWWVUnbZ6ehf9gW6gS6U7m9rre9uU2u9DshSygHgeSmlxvXND4CjUkpdUf5gGdBup/WtwAcopfS82qUAlFJ6gW8opW7pG0C7291aI6WMCvCjEELZ0X48v0X5/bUf2D87k85uA9b8vTf0Yl3dOkr5XgDoB6YAbgB9FwBCCHXm77//FkIoAOlMpjN88/y4fO/yRwCQUmox7QfD078MhE6fG63G9I0AAGM/XNqXN64/7pWfHh8rN1wAoXjcsCyrb2BgZAnAn7/vFwDIsgIAw7L6DAsAyzKWAEwZAG3bS2k/eDo/Hw37L8D2g7D9oBfA9vOdfmP+pS576qWeXN3T/2Zf788BvL8YpPzb6N6zE8IeWj7jB8PZ8S6V6e+K1mZf/17gAziwO/bX7XNfC7vD9gP7+GffFmCHw+EQb6T9oK4v1bK6D132xOvx/IatwFHgS9peAFp9T+bX/XfPfeM/+06glGIEoA8Yp5S3A8D+p6/T06v7+g8Cg8AxdWkR/5O79wVfA0SAs0C8o6PjaUdHx9N6I96Mxxv690CAtfXGsCwrvPzZgwcPx0IInshkNoV++9vXNq4XgVkgvK5vYv/o9LkJgL4eWfEPhU8u9H6x4Hw6fWbWbIQQAsCyrMhS+p2YIIDtB23bXvInP3w2P69XwA6SgE6A9R9OAnbYDoD1/07wN+wUvP0AisYAAAAASUVORK5CYII=") 16 16, default !important;
+    }
+
+    /* ANIMACIÓN PARA LAS TARJETAS */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px); /* Aparecen desde un poco más abajo */
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .tarjeta-animada {
+        animation: fadeInUp 0.8s ease-out forwards;
+    }
+</style>
 </head>
 <body>
 
