@@ -158,7 +158,8 @@ body {
     border: 4px solid #39ff14;
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
-    overflow-x: auto;
+    height: auto; 
+    overflow-y: visible; 
 }
 
 #vis-grafico-tecnicos {
@@ -289,4 +290,20 @@ body {
     .info-card {
         min-height: auto;
     }
+}
+
+.brecha-fullwidth {
+    width: 100% !important;
+    max-width: 100vw !important;
+    position: relative;
+    /* Cambiado aquí a foto_fondo.jpg */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.40)),
+                      url('imagenes/foto_fondo.jpg') !important; 
+    background-size: cover !important;
+    background-position: center !important;
+    padding: 60px 0 !important;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
